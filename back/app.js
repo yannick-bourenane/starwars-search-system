@@ -4,13 +4,10 @@ const Hapi = require("@hapi/hapi");
 const axios = require("axios");
 
 const fetchAllData = (search) => {
-  axios
-    .get("https://swapi.dev/api/", {
-      mode: "cors",
-    })
-    .then((res) => {
-      console.log(res.data.people);
-    });
+  return axios
+    .get("https://swapi.dev/api/")
+    .then((res) => res.data.people)
+    .catch((err) => "Oops an error occured : " + err);
 };
 
 const init = async () => {
@@ -23,10 +20,7 @@ const init = async () => {
     method: "GET",
     path: "/",
     handler: (request, h) => {
-      console.log("1");
-      fetchAllData();
-      console.log("2");
-      return { "a nice object": {} };
+      return fetchAllData();
     },
   });
   server.route({
@@ -37,9 +31,19 @@ const init = async () => {
       return `Search is ${request.params.search}`;
     },
   });
-
-  await server.start();
-  console.log("Server running on %s", server.info.uri);
+  try {
+    await server.register({
+      plugin: require("hapi-cors"),
+      options: {
+        origins: [process.env.FRONTEND_URI],
+      },
+    });
+    await server.start();
+    console.log("Server running on %s", server.info.uri);
+  } catch (err) {
+    console.log(err);
+    process.exit(1);
+  }
 };
 
 process.on("unhandledRejection", (err) => {

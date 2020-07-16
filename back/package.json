@@ -12,6 +12,7 @@
   "dependencies": {
     "@hapi/hapi": "^19.1.1",
     "axios": "^0.19.2",
-    "dotenv": "^8.2.0"
+    "dotenv": "^8.2.0",
+    "hapi-cors": "^1.0.3"
   }
 }
