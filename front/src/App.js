@@ -1,4 +1,5 @@
 import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import { Route, Switch } from "react-router-dom";
 import Home from "./views/Home.jsx";
@@ -15,7 +16,7 @@ function App() {
 
   return (
     <div className="App">
-      {/*testFetchBack()*/}
+      {testFetchBack()}
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="*" component={NotFound} />
