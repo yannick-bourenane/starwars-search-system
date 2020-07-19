@@ -20,7 +20,9 @@ const fetchRootUrls = (typesArr) => {
       if (typesArr.length) {
         let filteredData = {};
         for (let key in url.data) {
-          if (typesArr.includes(key)) filteredData[key] = url.data[key];
+          if (typesArr.includes(key)) {
+            filteredData[key] = url.data[key];
+          }
         }
         return filteredData;
       } else {
@@ -29,19 +31,6 @@ const fetchRootUrls = (typesArr) => {
     }) // Fetch only selected types if necessary
     .catch((err) => console.log("Oops an error occured : " + err));
 };
-// let arr = [];
-// const isNext = async (url) => {
-//   let d = await axios
-//     .get(url)
-//     .then((res) => {
-//       if (res.data.next) {
-//         isNext(res.data.next);
-//       }
-//       arr.push(res.data.results);
-//     })
-//     .catch((err) => console.log("Oops an error occured : " + err));
-//   return d;
-// };
 
 const getAllPagesUrl = async (url) => {
   const urlArr = [url];
@@ -76,9 +65,10 @@ const fetchListData = async (urlList, search) => {
           .then((res) =>
             res.data.results.map((element) => {
               return {
-                name: element.title || element.name,
+                name: element.name || element.title,
                 url: element.url,
                 type: type,
+                model: element.model || null,
               };
             })
           )
@@ -114,21 +104,30 @@ const init = async () => {
     { plugin: require("@hapi/cookie") },
   ]);
 
+  //await server.register(require("@hapi/cookie"));
+
   server.auth.strategy("session", "cookie", {
+    // cookie: {
+    //   name: "empireCookie",
+    //   password: process.env.PASSWORD_COOKIE,
+    //   // set to true in prod
+    //   isSecure: false,
+    //   ttl: 24 * 60 * 60 * 1000, // Set session to 1 day
+    // },
     cookie: {
-      name: "empireCookie",
+      name: "sid-example",
 
-      password: process.env.PASSWORD_COOKIE,
+      // Don't forget to change it to your own secret password!
+      password: "password-should-be-32-characters",
 
-      // set to true in prod
+      // For working via HTTP in localhost
       isSecure: false,
     },
-
-    redirectTo: false,
+    //redirectTo: false,
 
     validateFunc: async (request, session) => {
-      const account = users.find((user) => (user.id = session.id));
       console.log("in validate");
+      const account = users.find((user) => (user.id = session.id));
       if (!account) {
         // Must return { valid: false } for invalid cookies
         return { valid: false };
@@ -144,86 +143,105 @@ const init = async () => {
     {
       method: "GET",
       path: "/",
-      handler: (request, h) => {
-        return `Welcome to the website ! Rest of the content is private please login`;
-      },
       options: {
-        auth: { mode: "try" },
+        auth: "session",
+        plugins: {
+          "hapi-auth-cookie": {
+            redirectTo: false,
+          },
+        },
+        handler: (request, h) => {
+          if (request.auth.isAuthenticated) {
+            console.log("YES");
+          }
+          console.log("NOPE");
+          return `Welcome to the website ! Rest of the content is private please login`;
+        },
       },
     },
     {
       method: "POST",
-      path: "/signin",
-      handler: (request, h) => {
-        const { username, password } = request.payload;
-        //console.log(request.payload);
-        if (!username || !password) {
-          return {
-            msg:
-              "Merci de renseigner un nom d'utilisateur ainsi qu'un mot de passe.",
-          };
-        }
-        const account = users.find(
-          (user) => user.name === username && user.password === password
-        );
-        if (!account) {
-          return {
-            msg: "Nom d'utilisateur ou mot de passe incorrect.",
-          };
-        }
-
-        request.cookieAuth.set({ id: account.id });
-        //console.log(request.cookieAuth);
-        // return h.redirect("/search");
-        return { success: true };
-      },
+      path: "/login",
       options: {
         auth: {
           mode: "try",
+        },
+        handler: (request, h) => {
+          const { username, password } = request.payload;
+          //console.log(request.payload);
+          if (!username || !password) {
+            return {
+              msg:
+                "Merci de renseigner un nom d'utilisateur ainsi qu'un mot de passe.",
+            };
+          }
+          const account = users.find(
+            (user) => user.name === username && user.password === password
+          );
+          if (!account) {
+            return {
+              msg: "Nom d'utilisateur ou mot de passe incorrect.",
+            };
+          }
+
+          request.cookieAuth.set({ id: account.id });
+          return { success: true, req: request.auth };
         },
       },
     },
     {
       method: ["GET", "POST"],
       path: "/search/{search?}",
-      handler: async (request, h) => {
-        let search = "";
-        if (request.params.search && request.params.search !== "undefined") {
-          search = request.params.search;
-        }
-        let types = [];
-        if (request.payload) {
-          if ("types" in request.payload) {
-            types = request.payload.types;
-          }
-        }
-        async function completeFetch() {
-          let result = await fetchRootUrls(types);
-          return fetchListData(result, search);
-        }
-        var data = await completeFetch();
-        return { msg: "ok", data: data };
-        if (request.auth.isAuthenticated) {
-          console.log("AUTHENTICATED");
-        } else {
-          console.log("NOPE");
-        }
-        return "Private Content";
-      },
       options: {
         auth: false,
+        handler: async (request, h) => {
+          let search = "";
+          if (request.params.search && request.params.search !== "undefined") {
+            search = request.params.search;
+          }
+          let types = [];
+          if (request.payload) {
+            if ("types" in request.payload) {
+              types = request.payload.types;
+            }
+          }
+          async function completeFetch() {
+            let result = await fetchRootUrls(types);
+            return fetchListData(result, search);
+          }
+          var data = await completeFetch();
+          return { msg: "ok", data: data };
+          if (request.auth.isAuthenticated) {
+            console.log("AUTHENTICATED");
+          } else {
+            console.log("NOPE");
+          }
+          return "Private Content";
+        },
       },
     },
     {
       method: "POST",
       path: "/specific",
+      options: {
+        auth: false,
+        handler: async (request, h) => {
+          console.log("payload = ", request.payload);
+          const { url } = request.payload;
+          let data = await axios
+            .get(url)
+            .then((res) => res.data)
+            .catch((err) => console.log(err));
+          return data;
+        },
+      },
+    },
+    {
+      method: "GET",
+      path: "/getTypes",
       handler: async (request, h) => {
-        const { url } = request.payload;
-        let data = await axios
-          .get(url)
-          .then((res) => res.data)
-          .catch((err) => console.log(err));
-        return data;
+        let result = await fetchRootUrls([]);
+        return result;
       },
       options: {
         auth: false,
@@ -237,6 +255,7 @@ const init = async () => {
           request.cookieAuth.clear();
           return h.redirect("/");
         },
+        auth: false,
       },
     },
   ]);
