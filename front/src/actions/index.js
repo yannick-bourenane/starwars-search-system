@@ -10,3 +10,9 @@ export const typeValues = (arr) => {
     data: arr,
   };
 };
+export const currentUser = (obj) => {
+  return {
+    type: "CURRENTUSER",
+    data: obj,
+  };
+};

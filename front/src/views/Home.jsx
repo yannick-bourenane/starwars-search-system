@@ -1,11 +1,16 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import SearchBar from "../components/Filters/SearchBar";
-import FilterByType from "../components/Filters/FilterByType";
+import DetailedSheet from "../components/DetailedSheet";
+import LoginForm from "../components/LoginForm";
+import Header from "../components/Header";
 
 const Home = () => {
+  const user = useSelector((state) => state.currentUser);
+
   // const [filteredList, setFilteredList] = useState([]);
   // const [type, setType] = useState("");
 
@@ -17,13 +22,8 @@ const Home = () => {
 
   return (
     <Container>
-      <Row>
-        <Col sm={4}>
-          <SearchBar />
-          <FilterByType />
-        </Col>
-        <Col sm={8}></Col>
-      </Row>
+      <Header />
+      <LoginForm />
     </Container>
   );
 };
