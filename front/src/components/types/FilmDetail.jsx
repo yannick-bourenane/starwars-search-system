@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 const FilmDetail = ({
   type,
   infos,
   linkToType,
+  people,
   species,
-  homeWorld,
+  planets,
   vehicles,
   starships,
 }) => {
@@ -20,50 +21,30 @@ const FilmDetail = ({
         > {infos.name}
       </div>
       <h1>{infos.name}</h1>
-      <h2>
-        {species.length > 0 && (
-          <p>
-            {species.map((oneSpecies) => (
-              <Link
-                to={{
-                  pathname: "/detailed",
-                  state: {
-                    url: oneSpecies.url,
-                    type: "species",
-                  },
-                }}
-              >
-                {oneSpecies.name}
-              </Link>
-            ))}
-          </p>
-        )}
-      </h2>
-      {homeWorld.length > 0 && (
+      {species.length > 0 && (
         <p>
-          {console.log(vehicles)}
-          Homeworld :
-          {homeWorld.map((hw) => (
+          {species.map((oneSpecies) => (
             <Link
+              key={oneSpecies.name}
               to={{
                 pathname: "/detailed",
                 state: {
-                  url: hw.url,
-                  type: "planets",
+                  url: oneSpecies.url,
+                  type: "species",
                 },
               }}
             >
-              {hw.name}
+              {oneSpecies.name}
             </Link>
           ))}
         </p>
       )}
       {vehicles.length > 0 && (
         <p>
-          {console.log(vehicles)}
           Véhicule{vehicles.length > 1 && "s"} :
           {vehicles.map((vehicle) => (
             <Link
+              key={vehicle.name}
               to={{
                 pathname: "/detailed",
                 state: {
@@ -82,6 +63,7 @@ const FilmDetail = ({
           Starship{starships.length > 1 && "s"} :
           {starships.map((starship) => (
             <Link
+              key={starship.name}
               to={{
                 pathname: "/detailed",
                 state: {
@@ -95,11 +77,49 @@ const FilmDetail = ({
           ))}
         </p>
       )}
+      {planets.length > 0 && (
+        <p>
+          Planète{planets.length > 1 && "s"} :
+          {planets.map((planet) => (
+            <Link
+              key={planet.name}
+              to={{
+                pathname: "/detailed",
+                state: {
+                  url: planet.url,
+                  type: "planets",
+                },
+              }}
+            >
+              {planet.name}
+            </Link>
+          ))}
+        </p>
+      )}
+      {people.length > 0 && (
+        <p>
+          Character{people.length > 1 && "s"} :
+          {people.map((onePeople) => (
+            <Link
+              key={onePeople.name}
+              to={{
+                pathname: "/detailed",
+                state: {
+                  url: onePeople.url,
+                  type: "people",
+                },
+              }}
+            >
+              {onePeople.name}
+            </Link>
+          ))}
+        </p>
+      )}
       <ul className="divers">
-        {infos.gender && <li>Genre : {infos.gender}</li>}
-        {infos.birth_year && <li>Date de naissance : {infos.birth_year}</li>}
-        {infos.mass && <li>Poids : {infos.mass}</li>}
-        {infos.height && <li>Taille : {infos.height}</li>}
+        {infos.episode_id && <li>Film n° : {infos.episode_id}</li>}
+        {infos.director && <li>Directeur : {infos.director}</li>}
+        {infos.producer && <li>Producteur : {infos.producer}</li>}
+        {infos.release_date && <li>Date de sortie : {infos.release_date}</li>}
       </ul>
     </section>
   );

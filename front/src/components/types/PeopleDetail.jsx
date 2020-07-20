@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 const PeopleDetail = ({
@@ -25,6 +25,7 @@ const PeopleDetail = ({
           <p>
             {species.map((oneSpecies) => (
               <Link
+                key={oneSpecies.name}
                 to={{
                   pathname: "/detailed",
                   state: {
@@ -39,12 +40,12 @@ const PeopleDetail = ({
           </p>
         )}
       </h2>
-      {homeWorld.length > 0 && (
+      {homeWorld.length && (
         <p>
-          {console.log(vehicles)}
           Homeworld :
           {homeWorld.map((hw) => (
             <Link
+              key={hw.name}
               to={{
                 pathname: "/detailed",
                 state: {
@@ -60,10 +61,10 @@ const PeopleDetail = ({
       )}
       {vehicles.length > 0 && (
         <p>
-          {console.log(vehicles)}
           Véhicule{vehicles.length > 1 && "s"} :
           {vehicles.map((vehicle) => (
             <Link
+              key={vehicle.name}
               to={{
                 pathname: "/detailed",
                 state: {
@@ -82,6 +83,7 @@ const PeopleDetail = ({
           Starship{starships.length > 1 && "s"} :
           {starships.map((starship) => (
             <Link
+              key={starship.name}
               to={{
                 pathname: "/detailed",
                 state: {

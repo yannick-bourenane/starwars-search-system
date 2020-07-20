@@ -1,15 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
-const SpeciesDetail = ({
-  type,
-  infos,
-  linkToType,
-  species,
-  homeWorld,
-  vehicles,
-  starships,
-}) => {
+const SpeciesDetail = ({ type, infos, linkToType, people, homeWorld }) => {
   return (
     <section className={"fiche fiche-" + type}>
       <div className={"ariane"}>
@@ -20,31 +12,12 @@ const SpeciesDetail = ({
         > {infos.name}
       </div>
       <h1>{infos.name}</h1>
-      <h2>
-        {species.length > 0 && (
-          <p>
-            {species.map((oneSpecies) => (
-              <Link
-                to={{
-                  pathname: "/detailed",
-                  state: {
-                    url: oneSpecies.url,
-                    type: "species",
-                  },
-                }}
-              >
-                {oneSpecies.name}
-              </Link>
-            ))}
-          </p>
-        )}
-      </h2>
       {homeWorld.length > 0 && (
         <p>
-          {console.log(vehicles)}
           Homeworld :
           {homeWorld.map((hw) => (
             <Link
+              key={hw.name}
               to={{
                 pathname: "/detailed",
                 state: {
@@ -58,48 +31,39 @@ const SpeciesDetail = ({
           ))}
         </p>
       )}
-      {vehicles.length > 0 && (
+      {people.length > 0 && (
         <p>
-          {console.log(vehicles)}
-          Véhicule{vehicles.length > 1 && "s"} :
-          {vehicles.map((vehicle) => (
+          People :
+          {people.map((onePeople) => (
             <Link
+              key={onePeople.name}
               to={{
                 pathname: "/detailed",
                 state: {
-                  url: vehicle.url,
-                  type: "vehicles",
+                  url: onePeople.url,
+                  type: "people",
                 },
               }}
             >
-              {vehicle.name}
-            </Link>
-          ))}
-        </p>
-      )}
-      {starships.length > 0 && (
-        <p>
-          Starship{starships.length > 1 && "s"} :
-          {starships.map((starship) => (
-            <Link
-              to={{
-                pathname: "/detailed",
-                state: {
-                  url: starship.url,
-                  type: "starships",
-                },
-              }}
-            >
-              {starship.name}
+              {onePeople.name}
             </Link>
           ))}
         </p>
       )}
       <ul className="divers">
-        {infos.gender && <li>Genre : {infos.gender}</li>}
-        {infos.birth_year && <li>Date de naissance : {infos.birth_year}</li>}
-        {infos.mass && <li>Poids : {infos.mass}</li>}
-        {infos.height && <li>Taille : {infos.height}</li>}
+        {infos.classification && (
+          <li>Classification : {infos.classification}</li>
+        )}
+        {infos.average_height && (
+          <li>Taille moyenne : {infos.average_height}</li>
+        )}
+        {infos.skin_colors && <li>Couleur de peau : {infos.skin_colors}</li>}
+        {infos.hair_colors && <li>Couleur de cheveux : {infos.hair_colors}</li>}
+        {infos.eye_colors && <li>Couleur des yeux : {infos.eye_colors}</li>}
+        {infos.average_lifespan && (
+          <li>Durée de vie moyenne : {infos.average_lifespan}</li>
+        )}
+        {infos.language && <li>Langage : {infos.language}</li>}
       </ul>
     </section>
   );

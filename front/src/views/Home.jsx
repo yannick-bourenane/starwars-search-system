@@ -1,24 +1,16 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { Redirect } from "react-router-dom";
+import { useAuth } from "../auth/useAuth";
 import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import DetailedSheet from "../components/DetailedSheet";
 import LoginForm from "../components/LoginForm";
 import Header from "../components/Header";
 
 const Home = () => {
-  const user = useSelector((state) => state.currentUser);
+  const { isLoading, isLoggedIn } = useAuth();
 
-  // const [filteredList, setFilteredList] = useState([]);
-  // const [type, setType] = useState("");
-
-  // const handleFiltreType = () => {
-  //   // On filtre
-  // };
-
-  //return <div>{/* <FiltreType callback={handleFiltreType} /> */}</div>;
+  if (isLoading)
+    return <div className="flex-center-column loading">Loading...</div>;
+  if (isLoggedIn) return <Redirect to="/search" />;
 
   return (
     <Container>

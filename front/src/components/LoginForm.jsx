@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useDispatch } from "react-redux";
-import { currentUser } from "../actions";
 
 import Axios from "axios";
 
 import { withRouter } from "react-router-dom";
+import UserContext from "../auth/UserContext";
 
 const Login = (props) => {
   const dispatch = useDispatch();
@@ -12,24 +12,26 @@ const Login = (props) => {
   const [username, setUsername] = useState("Luke");
   const [password, setPassword] = useState(process.env.REACT_APP_PASSWORD);
 
+  const userContext = useContext(UserContext);
+  const { setCurrentUser } = userContext;
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const apiRes = await Axios.post(
         process.env.REACT_APP_BACKEND_URL + "/login",
-        { username, password }
+        { username, password },
+        { withCredentials: true }
       );
-      console.log(apiRes);
       if (!!apiRes.data) {
-        //localStorage.setItem("sid-example", "Tom");
-        dispatch(currentUser(apiRes.data));
+        setCurrentUser(apiRes.data);
         props.history.push("/search");
       } else {
         throw new Error("Error with the authentication");
       }
     } catch (err) {
       console.log(err);
-      dispatch(currentUser({}));
+      setCurrentUser(null);
     }
   };
 
