@@ -104,32 +104,20 @@ const init = async () => {
     { plugin: require("@hapi/cookie") },
   ]);
 
-  //await server.register(require("@hapi/cookie"));
-
   server.auth.strategy("session", "cookie", {
-    // cookie: {
-    //   name: "empireCookie",
-    //   password: process.env.PASSWORD_COOKIE,
-    //   // set to true in prod
-    //   isSecure: false,
-    //   ttl: 24 * 60 * 60 * 1000, // Set session to 1 day
-    // },
     cookie: {
-      name: "sid-example",
-
-      // Don't forget to change it to your own secret password!
-      password: "password-should-be-32-characters",
-
+      name: "empireCookie",
+      password: process.env.PASSWORD_COOKIE,
       // For working via HTTP in localhost
       isSecure: false,
+      ttl: 24 * 60 * 60 * 1000, // session = 1 day
     },
-    //redirectTo: false,
+    redirectTo: false,
 
     validateFunc: async (request, session) => {
-      console.log("in validate");
       const account = users.find((user) => (user.id = session.id));
+      console.log("validation");
       if (!account) {
-        // Must return { valid: false } for invalid cookies
         return { valid: false };
       }
 
@@ -141,25 +129,6 @@ const init = async () => {
 
   server.route([
     {
-      method: "GET",
-      path: "/",
-      options: {
-        auth: "session",
-        plugins: {
-          "hapi-auth-cookie": {
-            redirectTo: false,
-          },
-        },
-        handler: (request, h) => {
-          if (request.auth.isAuthenticated) {
-            console.log("YES");
-          }
-          console.log("NOPE");
-          return `Welcome to the website ! Rest of the content is private please login`;
-        },
-      },
-    },
-    {
       method: "POST",
       path: "/login",
       options: {
@@ -170,22 +139,24 @@ const init = async () => {
           const { username, password } = request.payload;
           //console.log(request.payload);
           if (!username || !password) {
-            return {
-              msg:
-                "Merci de renseigner un nom d'utilisateur ainsi qu'un mot de passe.",
-            };
+            return h
+              .response({
+                msg:
+                  "Merci de renseigner un nom d'utilisateur ainsi qu'un mot de passe.",
+              })
+              .code(403);
           }
           const account = users.find(
             (user) => user.name === username && user.password === password
           );
           if (!account) {
-            return {
-              msg: "Nom d'utilisateur ou mot de passe incorrect.",
-            };
+            return h
+              .response({ msg: "Nom d'utilisateur ou mot de passe incorrect." })
+              .code(403);
           }
 
           request.cookieAuth.set({ id: account.id });
-          return { success: true, req: request.auth };
+          return h.response({ msg: "Connexion réussie" }).code(200);
         },
       },
     },
@@ -193,7 +164,6 @@ const init = async () => {
       method: ["GET", "POST"],
       path: "/search/{search?}",
       options: {
-        auth: false,
         handler: async (request, h) => {
           let search = "";
           if (request.params.search && request.params.search !== "undefined") {
@@ -210,13 +180,7 @@ const init = async () => {
             return fetchListData(result, search);
           }
           var data = await completeFetch();
-          return { msg: "ok", data: data };
-          if (request.auth.isAuthenticated) {
-            console.log("AUTHENTICATED");
-          } else {
-            console.log("NOPE");
-          }
-          return "Private Content";
+          return h.response({ msg: "Fetch success", data: data }).code(200);
         },
       },
     },
@@ -224,7 +188,6 @@ const init = async () => {
       method: "POST",
       path: "/specific",
       options: {
-        auth: false,
         handler: async (request, h) => {
           console.log("payload = ", request.payload);
           const { url } = request.payload;
@@ -243,8 +206,23 @@ const init = async () => {
         let result = await fetchRootUrls([]);
         return result;
       },
+    },
+    {
+      method: "GET",
+      path: "/is-loggedin",
       options: {
-        auth: false,
+        handler: (request, h) => {
+          return request.auth.isAuthenticated
+            ? h
+                .response({
+                  currentUser: { name: request.auth.credentials.name },
+                })
+                .code(200)
+            : h.response("Unauthorized").code(403);
+        },
+        auth: {
+          mode: "try",
+        },
       },
     },
     {
@@ -253,9 +231,8 @@ const init = async () => {
       options: {
         handler: (request, h) => {
           request.cookieAuth.clear();
-          return h.redirect("/");
+          return h.response("Logged out").code(200);
         },
-        auth: false,
       },
     },
   ]);
