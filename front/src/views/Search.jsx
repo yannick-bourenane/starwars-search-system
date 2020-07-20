@@ -6,6 +6,7 @@ import Header from "../components/Header";
 import SearchBar from "../components/filters/SearchBar";
 import FilterByType from "../components/filters/FilterByType";
 import SearchResults from "../components/SearchResults";
+import "../styles/search.css";
 
 const Search = () => {
   const { isLoading, isLoggedIn } = useAuth();
@@ -20,10 +21,10 @@ const Search = () => {
         <Header />
         <SearchBar />
         <FilterByType />
-        <SearchResults />
+        <section className="search-results">
+          <SearchResults />
+        </section>
       </Container>
-      {/* <div onClick={handleSearch}>access private content</div>
-      <div onClick={handleFilter}>access planets and films only</div> */}
     </>
   );
 };

@@ -2,6 +2,8 @@ import React from "react";
 import { Redirect } from "react-router-dom";
 import { useAuth } from "../auth/useAuth";
 import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import LoginForm from "../components/LoginForm";
 import Header from "../components/Header";
 
@@ -15,7 +17,12 @@ const Home = () => {
   return (
     <Container>
       <Header />
-      <LoginForm />
+      <Row>
+        <Col md={{ span: 6, offset: 3 }}>
+          <h2 className="main-color">Connexion requise</h2>
+          <LoginForm />
+        </Col>
+      </Row>
     </Container>
   );
 };

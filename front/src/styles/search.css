@@ -1,0 +1,93 @@
+input.search {
+    width: 100%;
+    padding: 15px;
+    border-radius: 5px;
+    border: none
+}
+
+.all-types {
+    margin: 15px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.all-types .type {
+    background-color: var(--second-color);
+    padding: 5px 12px;
+    margin-bottom: 10px;
+}
+
+.all-types .type.is-selected,
+.all-types .type:hover {
+    cursor: pointer;
+    color: var(--main-color)
+}
+
+.search-results {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+}
+
+.result {
+    min-height: 219px;
+    padding: 12px;
+    background-size: auto 50% !important;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+.result.type-films {
+    background: url('../assets/img/icons/film.png') center center no-repeat var(--second-color);
+}
+
+.result.type-people {
+    background: url('../assets/img/icons/people.png') center center no-repeat var(--second-color);
+    background-size: contain;
+}
+
+.result.type-planets {
+    background: url('../assets/img/icons/planet.png') center center no-repeat var(--second-color);
+    background-size: contain;
+}
+
+.result.type-species {
+    background: url('../assets/img/icons/species.png') center center no-repeat var(--second-color);
+    background-size: contain;
+}
+
+.result.type-starships {
+    background: url('../assets/img/icons/starship.png') center center no-repeat var(--second-color);
+    background-size: contain;
+}
+
+.result.type-vehicles {
+    background: url('../assets/img/icons/vehicle.png') center center no-repeat var(--second-color);
+    background-size: contain;
+}
+
+.result:hover {
+    background-color: var(--second-color-hover);
+}
+
+.search-results a,
+.search-results a:hover {
+    color: var(--main-color);
+    text-decoration: none;
+}
+
+.search-results a h3 {
+    color: #FFF;
+    font-size: 1rem;
+}
+
+.search-results h4 {
+    font-style: italic;
+    font-size: 1rem;
+}

@@ -35,20 +35,22 @@ const FilterByType = (props) => {
   }, []);
 
   return (
-    <>
+    <div className="all-types">
       {allTypes.length &&
         allTypes.map((type) => (
           <div
             onClick={() => handleSelectedTypes(type)}
             className={
-              types.includes(type) ? "is-selected type-" + type : "type-" + type
+              types.includes(type)
+                ? "is-selected type type-" + type
+                : "type type-" + type
             }
             key={type}
           >
             {type}
           </div>
         ))}
-    </>
+    </div>
   );
 };
 

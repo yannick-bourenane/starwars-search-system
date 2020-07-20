@@ -56,19 +56,21 @@ const SearchResults = (props) => {
     <>
       {data.length ? (
         data.map((content) => (
-          <div key={content.name}>
-            <Link
-              to={{
-                pathname: "/detailed",
-                state: {
-                  url: content.url,
-                  type: content.type,
-                },
-              }}
-            >
-              {content.name}
-            </Link>
-          </div>
+          <Link
+            to={{
+              pathname: "/detailed",
+              state: {
+                url: content.url,
+                type: content.type,
+              },
+            }}
+          >
+            <div className={"result type-" + content.type} key={content.name}>
+              <h2>{content.name}</h2>
+              {content.model && <h3>Modèle : {content.model}</h3>}
+              <h4>{content.type}</h4>
+            </div>
+          </Link>
         ))
       ) : (
         <div>No results</div>

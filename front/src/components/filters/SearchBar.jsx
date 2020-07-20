@@ -8,10 +8,12 @@ const SearchBar = () => {
   const dispatch = useDispatch();
   return (
     <DebounceInput
+      className="search"
       minLength={2}
       debounceTimeout={300}
       onChange={(e) => dispatch(searchValue(e.target.value))}
       value={search && search}
+      placeholder={"Skywalker..."}
     />
   );
 };

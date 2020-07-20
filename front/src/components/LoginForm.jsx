@@ -6,6 +6,8 @@ import Axios from "axios";
 import { withRouter } from "react-router-dom";
 import UserContext from "../auth/UserContext";
 
+import "../styles/login.css";
+
 const Login = (props) => {
   const dispatch = useDispatch();
 
@@ -36,9 +38,9 @@ const Login = (props) => {
   };
 
   return (
-    <form styleName={"form"}>
+    <form className="form">
       <input
-        styleName={"input"}
+        className={"input"}
         type="text"
         placeholder="Utilisateur"
         required
@@ -46,14 +48,14 @@ const Login = (props) => {
         defaultValue={username ? username : ""}
       />
       <input
-        styleName={"input"}
+        className={"input"}
         type="password"
         placeholder="Password"
         required
         onChange={(e) => setPassword(e.target.value)}
         defaultValue={password ? password : ""}
       />
-      <button styleName={"button"} onClick={handleSubmit}>
+      <button className={"button"} onClick={handleSubmit}>
         Se connecter
       </button>
     </form>

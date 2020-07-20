@@ -1,0 +1,14 @@
+header {
+    padding: 40px;
+
+}
+
+header h1 {
+    color: var(--main-color);
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+header .welcome-user .button {
+    margin-left: 15px;
+}

@@ -11,7 +11,7 @@ import DetailedSheet from "./components/DetailedSheet";
 import { useAuth } from "./auth/useAuth";
 import UserContext from "./auth/UserContext";
 import { ProtectedRoute } from "./auth/ProtectedRoute";
-
+import "./styles/global.css";
 function App() {
   const { isLoading } = useAuth();
   const [currentUser, setCurrentUser] = useState({});

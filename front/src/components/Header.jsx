@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import UserContext from "../auth/UserContext";
 import { withRouter } from "react-router-dom";
 import Axios from "axios";
-
+import "../styles/header.css";
 const Header = (props) => {
   const userContext = useContext(UserContext);
   const { currentUser } = userContext;
@@ -18,10 +18,17 @@ const Header = (props) => {
       .catch((err) => console.log(err));
   };
   return (
-    <div>
-      Bonjour : {currentUser ? currentUser.name : "Inconnu"}{" "}
-      <button onClick={handleLogout}>Logout</button>
-    </div>
+    <header>
+      <h1>Base de données de l'empire</h1>
+      {currentUser && (
+        <div className="welcome-user">
+          <strong>Bienvenue {currentUser.name}</strong>{" "}
+          <button className="button" onClick={handleLogout}>
+            Se déconnecter
+          </button>
+        </div>
+      )}
+    </header>
   );
 };
 
