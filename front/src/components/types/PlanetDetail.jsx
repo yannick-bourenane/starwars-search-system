@@ -1,42 +1,39 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import RelatedContent from "../RelatedContent";
 
-const PlanetDetail = ({ type, infos, linkToType, people }) => {
+const PlanetDetail = ({ type, infos, people }) => {
+  const relatedContentArr = [people];
   return (
     <section className={"fiche fiche-" + type}>
-      <div className={"ariane"}>
-        <Link to="/search">Search</Link> >{" "}
-        <Link to="/search" onClick={() => linkToType(type)}>
-          {type}
-        </Link>{" "}
-        > {infos.name}
-      </div>
       <h1>{infos.name}</h1>
-      {people.length > 0 && (
-        <p>
-          Redisent{people.length > 1 && "s"} :
-          {people.map((onePeople) => (
-            <Link
-              key={onePeople.name}
-              to={{
-                pathname: "/detailed",
-                state: {
-                  url: onePeople.url,
-                  type: "people",
-                },
-              }}
-            >
-              {onePeople.name}
-            </Link>
-          ))}
-        </p>
-      )}
       <ul className="divers">
-        {infos.climate && <li>Climat : {infos.climate}</li>}
-        {infos.terrain && <li>Terrain : {infos.terrain}</li>}
-        {infos.gravity && <li>Gravité : {infos.gravity}</li>}
-        {infos.population && <li>Population : {infos.population}</li>}
+        {infos.climate && (
+          <li>
+            <b>Climate</b> : {infos.climate}
+          </li>
+        )}
+        {infos.terrain && (
+          <li>
+            <b>Terrain</b> : {infos.terrain}
+          </li>
+        )}
+        {infos.gravity && (
+          <li>
+            <b>Gravity</b> : {infos.gravity}
+          </li>
+        )}
+        {infos.population && (
+          <li>
+            <b>Population</b> : {infos.population}
+          </li>
+        )}
       </ul>
+      {relatedContentArr.map(
+        (related) =>
+          related.length > 0 && (
+            <RelatedContent related={related} key={related[0].type} />
+          )
+      )}
     </section>
   );
 };

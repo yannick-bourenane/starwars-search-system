@@ -19,7 +19,7 @@ const Home = () => {
       <Header />
       <Row>
         <Col md={{ span: 6, offset: 3 }}>
-          <h2 className="main-color">Connexion requise</h2>
+          <h2 className="main-color">Login Required</h2>
           <LoginForm />
         </Col>
       </Row>

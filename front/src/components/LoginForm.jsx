@@ -1,5 +1,4 @@
 import React, { useState, useContext } from "react";
-import { useDispatch } from "react-redux";
 
 import Axios from "axios";
 
@@ -9,8 +8,6 @@ import UserContext from "../auth/UserContext";
 import "../styles/login.css";
 
 const Login = (props) => {
-  const dispatch = useDispatch();
-
   const [username, setUsername] = useState("Luke");
   const [password, setPassword] = useState(process.env.REACT_APP_PASSWORD);
 
@@ -42,7 +39,7 @@ const Login = (props) => {
       <input
         className={"input"}
         type="text"
-        placeholder="Utilisateur"
+        placeholder="User"
         required
         onChange={(e) => setUsername(e.target.value)}
         defaultValue={username ? username : ""}
@@ -56,7 +53,7 @@ const Login = (props) => {
         defaultValue={password ? password : ""}
       />
       <button className={"button"} onClick={handleSubmit}>
-        Se connecter
+        Sign in
       </button>
     </form>
   );

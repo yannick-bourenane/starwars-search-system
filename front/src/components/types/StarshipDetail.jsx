@@ -1,35 +1,16 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import RelatedContent from "../RelatedContent";
 
-const StarshipDetail = ({ type, infos, linkToType, people }) => {
+const StarshipDetail = ({ type, infos, people }) => {
+  const relatedContentArr = [people];
   return (
     <section className={"fiche fiche-" + type}>
-      <div className={"ariane"}>
-        <Link to="/search">Search</Link> >{" "}
-        <Link to="/search" onClick={() => linkToType(type)}>
-          {type}
-        </Link>{" "}
-        > {infos.name}
-      </div>
       <h1>{infos.name}</h1>
-      {people.length > 0 && (
-        <p>
-          Pilote{people.length > 1 && "s"} :
-          {people.map((onePeople) => (
-            <Link
-              key={onePeople.name}
-              to={{
-                pathname: "/detailed",
-                state: {
-                  url: onePeople.url,
-                  type: "people",
-                },
-              }}
-            >
-              {onePeople.name}
-            </Link>
-          ))}
-        </p>
+      {relatedContentArr.map(
+        (related) =>
+          related.length > 0 && (
+            <RelatedContent related={related} key={related[0].type} />
+          )
       )}
       <ul className="divers">
         {(infos.model && infos.model) !== infos.name && (

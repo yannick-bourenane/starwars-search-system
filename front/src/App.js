@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import { Route, Switch } from "react-router-dom";
 import Home from "./views/Home.jsx";
 import NotFound from "./views/NotFound.jsx";
 import Search from "./views/Search";
-import DetailedSheet from "./components/DetailedSheet";
+import DetailedSheet from "./views/DetailedSheet";
 
 // auth
 import { useAuth } from "./auth/useAuth";

@@ -19,12 +19,12 @@ const Header = (props) => {
   };
   return (
     <header>
-      <h1>Base de données de l'empire</h1>
+      <h1>Empire Database</h1>
       {currentUser && (
         <div className="welcome-user">
-          <strong>Bienvenue {currentUser.name}</strong>{" "}
+          <strong>Logged in as {currentUser.name}</strong>{" "}
           <button className="button" onClick={handleLogout}>
-            Se déconnecter
+            Logout
           </button>
         </div>
       )}

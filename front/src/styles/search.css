@@ -7,10 +7,9 @@ input.search {
 
 .all-types {
     margin: 15px 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-column-gap: 10px;
 }
 
 .all-types .type {

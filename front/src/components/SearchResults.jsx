@@ -6,22 +6,25 @@ import { useSelector } from "react-redux";
 const SearchResults = (props) => {
   const search = useSelector((state) => state.searchValue);
   const types = useSelector((state) => state.typeValues);
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const handleFilter = async () => {
     try {
+      setLoading(true);
       const apiRes = await Axios.post(
         process.env.REACT_APP_BACKEND_URL + "/search/" + search,
         { types: types },
         { withCredentials: true }
       );
-      console.log("apires = " + apiRes.data);
       if (!!apiRes.data) {
-        console.log(apiRes.data);
-        setData(apiRes.data.data);
+        apiRes.data.data.length === 0
+          ? setData("No results")
+          : setData(apiRes.data.data);
       } else {
         throw new Error("Error with the search");
       }
+      setLoading(false);
     } catch (err) {
       console.log("err = " + err);
       if (err.response.status === 401) props.history.push("/");
@@ -34,7 +37,9 @@ const SearchResults = (props) => {
         { withCredentials: true }
       );
       if (!!apiRes.data) {
-        setData(apiRes.data.data);
+        apiRes.data.data.length === 0
+          ? setData("No results")
+          : setData(apiRes.data.data);
       } else {
         throw new Error("Error with the search");
       }
@@ -49,14 +54,15 @@ const SearchResults = (props) => {
       ? handleFilter()
       : search
       ? handleSearch()
-      : setData([]);
+      : setData(null);
   }, [types, search]);
 
   return (
     <>
-      {data.length ? (
-        data.map((content) => (
+      {!loading && data !== null && Array.isArray(data) && data.length > 0 ? (
+        data.map((content, i) => (
           <Link
+            key={i}
             to={{
               pathname: "/detailed",
               state: {
@@ -72,8 +78,12 @@ const SearchResults = (props) => {
             </div>
           </Link>
         ))
-      ) : (
+      ) : !loading && data === null ? (
+        <div>Type something or select a type of content</div>
+      ) : !loading && data === "No results" ? (
         <div>No results</div>
+      ) : (
+        <div>Loading...</div>
       )}
     </>
   );

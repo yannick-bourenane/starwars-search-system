@@ -1,0 +1,59 @@
+.result-breadcrumb {
+    text-transform: capitalize;
+    border-radius: 5px;
+    color: #888;
+    margin-bottom: 5px;
+}
+
+.result-breadcrumb a,
+.fiche h1,
+.fiche .list a {
+    color: var(--main-color);
+}
+
+.fiche {
+    padding: 25px;
+    background-color: var(--second-color);
+    border-radius: 5px;
+    text-align: left;
+}
+
+.fiche h1 {
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.fiche .list {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.fiche .list a {
+    display: inline-block;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    background-color: #222;
+    padding: 2px 5px;
+}
+
+.fiche .list a:hover {
+    text-decoration: none;
+    color: #222;
+    background-color: var(--main-color);
+}
+
+.fiche .related {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #444;
+}
+
+.fiche h5 {
+    text-transform: capitalize;
+}
+
+.fiche .divers {
+    list-style: none;
+}

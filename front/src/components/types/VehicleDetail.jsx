@@ -1,52 +1,31 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import RelatedContent from "../RelatedContent";
 
-const VehicleDetail = ({ type, infos, linkToType, people }) => {
+const VehicleDetail = ({ type, infos, people }) => {
+  const relatedContentArr = [people];
   return (
     <section className={"fiche fiche-" + type}>
-      <div className={"ariane"}>
-        <Link to="/search">Search</Link> >{" "}
-        <Link to="/search" onClick={() => linkToType(type)}>
-          {type}
-        </Link>{" "}
-        > {infos.name}
-      </div>
       <h1>{infos.name}</h1>
-      {people.length > 0 && (
-        <p>
-          Pilote{people.length > 1 && "s"} :
-          {people.map((onePeople) => (
-            <Link
-              key={onePeople.name}
-              to={{
-                pathname: "/detailed",
-                state: {
-                  url: onePeople.url,
-                  type: "people",
-                },
-              }}
-            >
-              {onePeople.name}
-            </Link>
-          ))}
-        </p>
+      {relatedContentArr.map(
+        (related) =>
+          related.length > 0 && (
+            <RelatedContent related={related} key={related[0].type} />
+          )
       )}
       <ul className="divers">
         {(infos.model && infos.model) !== infos.name && (
-          <li>Modèle : {infos.model}</li>
+          <li>Model : {infos.model}</li>
         )}
-        {infos.manufacturer && <li>Constructeur : {infos.manufacturer}</li>}
+        {infos.manufacturer && <li>Manufacturer : {infos.manufacturer}</li>}
         {infos.cost_in_credits && (
-          <li>Coût : {infos.cost_in_credits} crédits</li>
+          <li>Cost : {infos.cost_in_credits} credits</li>
         )}
-        {infos.length && <li>Longueur : {infos.length}</li>}
+        {infos.length && <li>Length : {infos.length}</li>}
         {infos.max_atmosphering_speed && (
-          <li>
-            Vitesse maximale en atmosphère : {infos.max_atmosphering_speed}
-          </li>
+          <li>Max atmosphering speed : {infos.max_atmosphering_speed}</li>
         )}
-        {infos.crew && <li>Equipage : {infos.crew}</li>}
-        {infos.passengers && <li>Passagers : {infos.passengers}</li>}
+        {infos.crew && <li>Crew : {infos.crew}</li>}
+        {infos.passengers && <li>Passengers : {infos.passengers}</li>}
       </ul>
     </section>
   );
