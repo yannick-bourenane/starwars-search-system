@@ -9,6 +9,7 @@ To get this project type \$git clone https://github.com/yannick-bourenane/starwa
 Back :
 
 - fetch and manipulate data from the Star Wars API SWAPI (https://swapi.dev/)
+- Routing
 - Cookies Auth
 
 Front :
