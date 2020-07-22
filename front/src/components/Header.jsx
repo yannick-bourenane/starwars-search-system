@@ -1,19 +1,26 @@
 import React, { useContext } from "react";
+import { useDispatch } from "react-redux";
+import { typeValues } from "../actions";
+import { searchValue } from "../actions";
 import UserContext from "../auth/UserContext";
 import { withRouter } from "react-router-dom";
 import Axios from "axios";
 import "../styles/header.css";
+
 const Header = (props) => {
   const userContext = useContext(UserContext);
   const { currentUser } = userContext;
+
+  const dispatch = useDispatch();
 
   const handleLogout = () => {
     Axios.get(process.env.REACT_APP_BACKEND_URL + "/logout", {
       withCredentials: true,
     })
       .then((res) => {
+        dispatch(typeValues([]));
+        dispatch(searchValue(""));
         props.history.push("/");
-        console.log(res.data);
       })
       .catch((err) => console.log(err));
   };
