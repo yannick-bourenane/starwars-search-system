@@ -85,7 +85,6 @@ const DetailedSheet = (props) => {
   }, [infos]);
 
   const getSpecificData = async () => {
-    console.log("hey");
     setLoading(true);
     let fetchData = await Axios.post(
       process.env.REACT_APP_BACKEND_URL + "/specific",
@@ -151,10 +150,7 @@ const DetailedSheet = (props) => {
                 </Link>{" "}
                 > {infos.name}
               </div>
-              <button
-                className="button"
-                onClick={() => console.log(props.history.goBack())}
-              >
+              <button className="button" onClick={() => props.history.goBack()}>
                 &lt; Retour
               </button>
             </div>

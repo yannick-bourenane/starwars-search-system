@@ -116,7 +116,6 @@ const init = async () => {
 
     validateFunc: async (request, session) => {
       const account = users.find((user) => (user.id = session.id));
-      console.log("validation");
       if (!account) {
         return { valid: false };
       }
@@ -137,7 +136,6 @@ const init = async () => {
         },
         handler: (request, h) => {
           const { username, password } = request.payload;
-          //console.log(request.payload);
           if (!username || !password) {
             return h
               .response({
@@ -189,7 +187,6 @@ const init = async () => {
       path: "/specific",
       options: {
         handler: async (request, h) => {
-          console.log("payload = ", request.payload);
           const { url } = request.payload;
           let data = await axios
             .get(url)
