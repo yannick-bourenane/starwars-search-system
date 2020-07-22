@@ -9,13 +9,13 @@ const SearchResults = (props) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const handleFilter = async () => {
+  const handleFilter = async (cancel) => {
     try {
       setLoading(true);
       const apiRes = await Axios.post(
         process.env.REACT_APP_BACKEND_URL + "/search/" + search,
         { types: types },
-        { withCredentials: true }
+        { withCredentials: true, cancelToken: cancel.token }
       );
       if (!!apiRes.data) {
         apiRes.data.data.length === 0
@@ -26,15 +26,16 @@ const SearchResults = (props) => {
       }
       setLoading(false);
     } catch (err) {
-      console.log("err = " + err);
-      if (err.response.status === 401) props.history.push("/");
+      console.log(err);
+      if ("response" in err && err.response.status === 401)
+        props.history.push("/");
     }
   };
-  const handleSearch = async () => {
+  const handleSearch = async (cancel) => {
     try {
       const apiRes = await Axios.get(
         process.env.REACT_APP_BACKEND_URL + "/search/" + search,
-        { withCredentials: true }
+        { withCredentials: true, cancelToken: cancel.token }
       );
       if (!!apiRes.data) {
         apiRes.data.data.length === 0
@@ -44,17 +45,24 @@ const SearchResults = (props) => {
         throw new Error("Error with the search");
       }
     } catch (err) {
-      console.log("err = " + err);
-      if (err.response.status === 401) props.history.push("/");
+      console.log(err);
+      if ("response" in err && err.response.status === 401)
+        props.history.push("/");
     }
   };
 
   useEffect(() => {
-    (types.length && search) || types.length
-      ? handleFilter()
-      : search
-      ? handleSearch()
-      : setData(null);
+    const cancel = Axios.CancelToken.source();
+    (async () => {
+      (types.length && search) || types.length
+        ? handleFilter(cancel)
+        : search
+        ? handleSearch(cancel)
+        : setData(null);
+    })();
+    return () => {
+      cancel.cancel();
+    };
   }, [types, search]);
 
   return (
