@@ -9,22 +9,22 @@ const PlanetDetail = ({ type, infos, people }) => {
       <ul className="divers">
         {infos.climate && (
           <li>
-            <b>Climate</b> : {infos.climate}
+            <b>Climate :</b> {infos.climate}
           </li>
         )}
         {infos.terrain && (
           <li>
-            <b>Terrain</b> : {infos.terrain}
+            <b>Terrain :</b> {infos.terrain}
           </li>
         )}
         {infos.gravity && (
           <li>
-            <b>Gravity</b> : {infos.gravity}
+            <b>Gravity :</b> {infos.gravity}
           </li>
         )}
         {infos.population && (
           <li>
-            <b>Population</b> : {infos.population}
+            <b>Population :</b> {infos.population}
           </li>
         )}
       </ul>

@@ -9,43 +9,21 @@ const SearchResults = (props) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const handleFilter = async (cancel) => {
+  const handleFilter = async (apiRes) => {
     try {
       setLoading(true);
-      const apiRes = await Axios.post(
-        process.env.REACT_APP_BACKEND_URL + "/search/" + search,
-        { types: types },
-        { withCredentials: true, cancelToken: cancel.token }
-      );
-      if (!!apiRes.data) {
-        apiRes.data.data.length === 0
+      let res = await apiRes;
+      if (!!res.data) {
+        res.data.data.length === 0
           ? setData("No results")
-          : setData(apiRes.data.data);
+          : setData(res.data.data);
       } else {
         throw new Error("Error with the search");
       }
       setLoading(false);
     } catch (err) {
       console.log(err);
-      if ("response" in err && err.response.status === 401)
-        props.history.push("/");
-    }
-  };
-  const handleSearch = async (cancel) => {
-    try {
-      const apiRes = await Axios.get(
-        process.env.REACT_APP_BACKEND_URL + "/search/" + search,
-        { withCredentials: true, cancelToken: cancel.token }
-      );
-      if (!!apiRes.data) {
-        apiRes.data.data.length === 0
-          ? setData("No results")
-          : setData(apiRes.data.data);
-      } else {
-        throw new Error("Error with the search");
-      }
-    } catch (err) {
-      console.log(err);
+      setLoading(false);
       if ("response" in err && err.response.status === 401)
         props.history.push("/");
     }
@@ -53,12 +31,25 @@ const SearchResults = (props) => {
 
   useEffect(() => {
     const cancel = Axios.CancelToken.source();
+
     (async () => {
-      (types.length && search) || types.length
-        ? handleFilter(cancel)
-        : search
-        ? handleSearch(cancel)
-        : setData(null);
+      if ((types.length && search) || types.length) {
+        const apiRes = Axios.post(
+          process.env.REACT_APP_BACKEND_URL + "/search/" + search,
+          { types: types },
+          { withCredentials: true, cancelToken: cancel.token }
+        );
+        handleFilter(apiRes);
+      } else if (search) {
+        const apiRes = Axios.get(
+          process.env.REACT_APP_BACKEND_URL + "/search/" + search,
+          { withCredentials: true, cancelToken: cancel.token }
+        );
+        handleFilter(apiRes);
+      } else {
+        setLoading(false);
+        setData(null);
+      }
     })();
     return () => {
       cancel.cancel();

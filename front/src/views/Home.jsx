@@ -11,7 +11,11 @@ const Home = () => {
   const { isLoading, isLoggedIn } = useAuth();
 
   if (isLoading)
-    return <div className="flex-center-column loading">Loading...</div>;
+    return (
+      <Container>
+        <div className="loading">Loading...</div>
+      </Container>
+    );
   if (isLoggedIn) return <Redirect to="/search" />;
 
   return (

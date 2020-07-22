@@ -14,10 +14,26 @@ const PeopleDetail = ({
     <section className={"fiche fiche-" + type}>
       <h1>{infos.name}</h1>
       <ul className="divers">
-        {infos.gender && <li>Gender : {infos.gender}</li>}
-        {infos.birth_year && <li>Birth year : {infos.birth_year}</li>}
-        {infos.mass && <li>Mass : {infos.mass}</li>}
-        {infos.height && <li>Height : {infos.height}</li>}
+        {infos.gender && (
+          <li>
+            <b>Gender :</b> {infos.gender}
+          </li>
+        )}
+        {infos.birth_year && (
+          <li>
+            <b>Birth year :</b> {infos.birth_year}
+          </li>
+        )}
+        {infos.mass && (
+          <li>
+            <b>Mass :</b> {infos.mass}
+          </li>
+        )}
+        {infos.height && (
+          <li>
+            <b>Height :</b> {infos.height}
+          </li>
+        )}
       </ul>
       {relatedContentArr.map(
         (related) =>

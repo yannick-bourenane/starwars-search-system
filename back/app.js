@@ -1,4 +1,5 @@
 "use strict";
+
 require("dotenv").config();
 const Hapi = require("@hapi/hapi");
 const axios = require("axios");
@@ -18,6 +19,7 @@ const fetchRootUrls = (typesArr) => {
     .get(APIBaseUrl) // get all the fetch links of the API
     .then((url) => {
       if (typesArr.length) {
+        // if types filter selected then only fetch the corresponding URLS
         let filteredData = {};
         for (let key in url.data) {
           if (typesArr.includes(key)) {
@@ -28,10 +30,11 @@ const fetchRootUrls = (typesArr) => {
       } else {
         return url.data;
       }
-    }) // Fetch only selected types if necessary
+    })
     .catch((err) => console.log("Oops an error occured : " + err));
 };
 
+// Fetch all URL of the API instead of page 1 only
 const getAllPagesUrl = async (url) => {
   const urlArr = [url];
   let currentUrl = url;
@@ -50,7 +53,7 @@ const getAllPagesUrl = async (url) => {
   }
   return urlArr;
 };
-
+// Fetch the Data
 const fetchListData = async (urlList, search) => {
   var promises = [];
   for (var property in urlList) {
@@ -65,6 +68,7 @@ const fetchListData = async (urlList, search) => {
           .then((res) =>
             res.data.results.map((element) => {
               return {
+                // Select the necessary content to display in the result list
                 name: element.name || element.title,
                 url: element.url,
                 type: type,

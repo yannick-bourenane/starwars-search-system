@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "./App.css";
 import { Route, Switch } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./styles/global.css";
+
 import Home from "./views/Home.jsx";
 import NotFound from "./views/NotFound.jsx";
 import Search from "./views/Search";
@@ -11,7 +12,7 @@ import DetailedSheet from "./views/DetailedSheet";
 import { useAuth } from "./auth/useAuth";
 import UserContext from "./auth/UserContext";
 import { ProtectedRoute } from "./auth/ProtectedRoute";
-import "./styles/global.css";
+
 function App() {
   const { isLoading } = useAuth();
   const [currentUser, setCurrentUser] = useState({});

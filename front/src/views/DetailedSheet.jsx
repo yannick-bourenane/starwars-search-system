@@ -55,30 +55,47 @@ const DetailedSheet = (props) => {
   const getDeepInfos = () => {
     if ("species" in infos && infos.species.length)
       getSpecies({ type: "species", arr: infos.species });
-    if ("homeworld" in infos && infos.homeworld.length)
+    else setSpecies([]);
+
+    if ("homeworld" in infos && infos.homeworld)
       getHomeWorld({
         type: "planets",
         label: "homeworld",
         arr: [infos.homeworld],
       });
+    else setHomeWorld([]);
+
     if ("planets" in infos && infos.planets.length)
       getHomeWorld({ type: "planets", arr: infos.planets });
+    else setHomeWorld([]);
+
     if ("vehicles" in infos && infos.vehicles.length)
       getVehicles({ type: "vehicles", arr: infos.vehicles });
+    else setVehicles([]);
+
     if ("starships" in infos && infos.starships.length)
       getStarships({ type: "starships", arr: infos.starships });
+    else setStarships([]);
+
     if ("characters" in infos && infos.characters.length)
       getPeople({
         type: "people",
         label: "characters",
         arr: infos.characters,
       });
+    else setPeople([]);
+
     if ("pilots" in infos && infos.pilots.length)
       getPeople({ type: "people", label: "pilots", arr: infos.pilots });
+    else setPeople([]);
+
     if ("people" in infos && infos.people.length)
       getPeople({ type: "people", arr: infos.people });
+    else setPeople([]);
+
     if ("residents" in infos && infos.residents.length)
       getPeople({ type: "people", label: "residents", arr: infos.residents });
+    else setPeople([]);
   };
   useEffect(() => {
     if (Object.keys(infos).length > 0) getDeepInfos();
@@ -89,7 +106,7 @@ const DetailedSheet = (props) => {
     let fetchData = await Axios.post(
       process.env.REACT_APP_BACKEND_URL + "/specific",
       { url: props.location.state.url },
-      { withCredentials: true } // props.url
+      { withCredentials: true }
     )
       .then((res) => {
         setInfos(res.data);
@@ -98,7 +115,8 @@ const DetailedSheet = (props) => {
       .catch((err) => {
         console.log(err);
         setLoading(false);
-        if (err.response.status === 401) props.history.push("/");
+        if ("response" in err && err.response.status === 401)
+          props.history.push("/");
       });
     return fetchData;
   };
@@ -148,7 +166,7 @@ const DetailedSheet = (props) => {
                 >
                   {props.location.state.type}
                 </Link>{" "}
-                > {infos.name}
+                > {infos.name || infos.title}
               </div>
               <button className="button" onClick={() => props.history.goBack()}>
                 &lt; Retour
