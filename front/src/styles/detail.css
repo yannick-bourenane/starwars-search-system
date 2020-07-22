@@ -1,3 +1,13 @@
+.detail-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.detail-nav button {
+    margin-bottom: 5px;
+}
+
 .result-breadcrumb {
     text-transform: capitalize;
     border-radius: 5px;
