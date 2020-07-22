@@ -26,7 +26,6 @@ const Header = (props) => {
   };
   return (
     <header>
-      <h1>Empire Database</h1>
       {currentUser && (
         <div className="welcome-user">
           <strong>Logged in as {currentUser.name}</strong>{" "}
@@ -35,6 +34,7 @@ const Header = (props) => {
           </button>
         </div>
       )}
+      <h1>Empire Database</h1>
     </header>
   );
 };
