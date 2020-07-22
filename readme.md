@@ -32,6 +32,9 @@ $cd front
 $npm install
 \$npm start
 
+Login : Luke
+Password : DadSucks
+
 ## Docs
 
 Back :
