@@ -23,7 +23,6 @@ const SearchResults = (props) => {
       setLoading(false);
     } catch (err) {
       console.log(err);
-      setLoading(false);
       if ("response" in err && err.response.status === 401)
         props.history.push("/");
     }
