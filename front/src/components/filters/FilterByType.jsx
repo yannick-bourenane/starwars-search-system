@@ -36,7 +36,7 @@ const FilterByType = (props) => {
 
   return (
     <div className="all-types">
-      {allTypes.length &&
+      {allTypes.length > 0 &&
         allTypes.map((type) => (
           <div
             onClick={() => handleSelectedTypes(type)}

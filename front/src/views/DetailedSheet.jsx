@@ -22,6 +22,7 @@ import VehicleDetail from "../components/types/VehicleDetail";
 const DetailedSheet = (props) => {
   const dispatch = useDispatch();
   const [infos, setInfos] = useState({});
+  const [loading, setLoading] = useState(false);
 
   const [people, setPeople] = useState([]);
   const [species, setSpecies] = useState([]);
@@ -84,14 +85,20 @@ const DetailedSheet = (props) => {
   }, [infos]);
 
   const getSpecificData = async () => {
+    console.log("hey");
+    setLoading(true);
     let fetchData = await Axios.post(
       process.env.REACT_APP_BACKEND_URL + "/specific",
       { url: props.location.state.url },
       { withCredentials: true } // props.url
     )
-      .then((res) => setInfos(res.data))
+      .then((res) => {
+        setInfos(res.data);
+        setLoading(false);
+      })
       .catch((err) => {
         console.log(err);
+        setLoading(false);
         if (err.response.status === 401) props.history.push("/");
       });
     return fetchData;
@@ -128,83 +135,89 @@ const DetailedSheet = (props) => {
     <Container>
       <Header />
       <Row>
-        <Col md={{ span: 8, offset: 2 }}>
-          <div className="detail-nav">
-            <div className={"result-breadcrumb"}>
-              <Link to="/search" onClick={() => linkBreadcrumb([])}>
-                Search
-              </Link>{" "}
-              >{" "}
-              <Link
-                to="/search"
-                onClick={() => linkBreadcrumb([props.location.state.type])}
+        {!loading ? (
+          <Col md={{ span: 8, offset: 2 }}>
+            <div className="detail-nav">
+              <div className={"result-breadcrumb"}>
+                <Link to="/search" onClick={() => linkBreadcrumb([])}>
+                  Search
+                </Link>{" "}
+                >{" "}
+                <Link
+                  to="/search"
+                  onClick={() => linkBreadcrumb([props.location.state.type])}
+                >
+                  {props.location.state.type}
+                </Link>{" "}
+                > {infos.name}
+              </div>
+              <button
+                className="button"
+                onClick={() => console.log(props.history.goBack())}
               >
-                {props.location.state.type}
-              </Link>{" "}
-              > {infos.name}
+                &lt; Retour
+              </button>
             </div>
-            <button
-              className="button"
-              onClick={() => console.log(props.history.goBack())}
-            >
-              &lt; Retour
-            </button>
-          </div>
-          {Object.keys(infos).length > 0 && (
-            <>
-              {props.location.state.type === "people" && (
-                <PeopleDetail
-                  type={props.location.state.type}
-                  infos={infos}
-                  species={species}
-                  homeWorld={homeWorld}
-                  vehicles={vehicles}
-                  starships={starships}
-                />
-              )}
-              {props.location.state.type === "films" && (
-                <FilmDetail
-                  people={people}
-                  type={props.location.state.type}
-                  infos={infos}
-                  species={species}
-                  planets={homeWorld}
-                  vehicles={vehicles}
-                  starships={starships}
-                />
-              )}
-              {props.location.state.type === "planets" && (
-                <PlanetDetail
-                  people={people}
-                  type={props.location.state.type}
-                  infos={infos}
-                />
-              )}
-              {props.location.state.type === "species" && (
-                <SpeciesDetail
-                  people={people}
-                  type={props.location.state.type}
-                  infos={infos}
-                  homeWorld={homeWorld}
-                />
-              )}
-              {props.location.state.type === "starships" && (
-                <StarshipDetail
-                  people={people}
-                  type={props.location.state.type}
-                  infos={infos}
-                />
-              )}
-              {props.location.state.type === "vehicles" && (
-                <VehicleDetail
-                  people={people}
-                  type={props.location.state.type}
-                  infos={infos}
-                />
-              )}
-            </>
-          )}
-        </Col>
+            {Object.keys(infos).length > 0 && (
+              <>
+                {props.location.state.type === "people" && (
+                  <PeopleDetail
+                    type={props.location.state.type}
+                    infos={infos}
+                    species={species}
+                    homeWorld={homeWorld}
+                    vehicles={vehicles}
+                    starships={starships}
+                  />
+                )}
+                {props.location.state.type === "films" && (
+                  <FilmDetail
+                    people={people}
+                    type={props.location.state.type}
+                    infos={infos}
+                    species={species}
+                    planets={homeWorld}
+                    vehicles={vehicles}
+                    starships={starships}
+                  />
+                )}
+                {props.location.state.type === "planets" && (
+                  <PlanetDetail
+                    people={people}
+                    type={props.location.state.type}
+                    infos={infos}
+                  />
+                )}
+                {props.location.state.type === "species" && (
+                  <SpeciesDetail
+                    people={people}
+                    type={props.location.state.type}
+                    infos={infos}
+                    homeWorld={homeWorld}
+                  />
+                )}
+                {props.location.state.type === "starships" && (
+                  <StarshipDetail
+                    people={people}
+                    type={props.location.state.type}
+                    infos={infos}
+                  />
+                )}
+                {props.location.state.type === "vehicles" && (
+                  <VehicleDetail
+                    people={people}
+                    type={props.location.state.type}
+                    infos={infos}
+                  />
+                )}
+              </>
+            )}
+          </Col>
+        ) : (
+          <Col md={{ span: 8, offset: 2 }}>
+            <h1>Loading...</h1>
+          </Col>
+        )}
       </Row>
     </Container>
   );
