@@ -4,7 +4,7 @@ import { searchValue } from "../../actions";
 import { DebounceInput } from "react-debounce-input";
 
 const SearchBar = () => {
-  const search = useSelector((state) => state.searchValue.data);
+  const search = useSelector((state) => state.searchValue);
   const dispatch = useDispatch();
   return (
     <DebounceInput
