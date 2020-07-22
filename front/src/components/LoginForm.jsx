@@ -10,6 +10,7 @@ import "../styles/login.css";
 const Login = (props) => {
   const [username, setUsername] = useState("Luke");
   const [password, setPassword] = useState(process.env.REACT_APP_PASSWORD);
+  const [msg, setMsg] = useState(null);
 
   const userContext = useContext(UserContext);
   const { setCurrentUser } = userContext;
@@ -30,12 +31,14 @@ const Login = (props) => {
       }
     } catch (err) {
       console.log(err);
+      setMsg(err.response.data.msg);
       setCurrentUser(null);
     }
   };
 
   return (
     <form className="form">
+      {msg && <p className="msg">{msg}</p>}
       <input
         className={"input"}
         type="text"
