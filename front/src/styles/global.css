@@ -1,47 +1,45 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Red+Rose:wght@300;400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Red+Rose:wght@300;400;700&display=swap");
 
 :root {
-    --main-color: #F8E420;
-    --main-color-hover: #f7c820;
-    --second-color: #333;
-    --second-color-hover: #444;
+  --main-color: #f8e420;
+  --main-color-hover: #f7c820;
+  --second-color: #333;
+  --second-color-hover: #444;
 }
 
 body {
-    font-family: 'Red Rose', cursive, sans-serif;
-    color: #999
+  font-family: "Red Rose", cursive, sans-serif;
+  color: #999;
 }
 
-
 .App {
-    min-height: 100vh;
-    background: url('../assets/img/bg_main.jpg') no-repeat top center #050505;
-    text-align: center;
+  min-height: 100vh;
+  text-align: center;
 }
 
 strong,
 b {
-    font-weight: 700;
+  font-weight: 700;
 }
 
 .main-color {
-    color: var(--main-color);
+  color: var(--main-color);
 }
 
 .button {
-    background-color: var(--main-color);
-    color: var(--second-color);
-    border-radius: 5px;
-    padding: 5px 8px;
-    border: none
+  background-color: var(--main-color);
+  color: var(--second-color);
+  border-radius: 5px;
+  padding: 5px 8px;
+  border: none;
 }
 
 .button:hover {
-    background-color: var(--main-color-hover);
+  background-color: var(--main-color-hover);
 }

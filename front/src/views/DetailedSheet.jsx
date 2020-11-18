@@ -10,6 +10,7 @@ import "../styles/detail.css";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import withSpaceBackground from "../hoc/withSpaceBackground";
 
 import Header from "../components/Header";
 import PeopleDetail from "../components/types/PeopleDetail";
@@ -237,4 +238,4 @@ const DetailedSheet = (props) => {
   );
 };
 
-export default withRouter(DetailedSheet);
+export default withRouter(withSpaceBackground(DetailedSheet));

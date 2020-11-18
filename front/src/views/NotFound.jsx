@@ -1,6 +1,7 @@
 import React from "react";
 import Container from "react-bootstrap/Container";
 import Header from "../components/Header";
+import withSpaceBackground from "../hoc/withSpaceBackground";
 
 const NotFound = () => {
   return (
@@ -11,4 +12,4 @@ const NotFound = () => {
   );
 };
 
-export default NotFound;
+export default withSpaceBackground(NotFound);

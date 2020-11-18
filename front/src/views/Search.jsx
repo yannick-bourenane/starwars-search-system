@@ -6,6 +6,7 @@ import Header from "../components/Header";
 import SearchBar from "../components/filters/SearchBar";
 import FilterByType from "../components/filters/FilterByType";
 import SearchResults from "../components/SearchResults";
+import withSpaceBackground from "../hoc/withSpaceBackground";
 import "../styles/search.css";
 
 const Search = () => {
@@ -29,4 +30,4 @@ const Search = () => {
   );
 };
 
-export default Search;
+export default withSpaceBackground(Search);

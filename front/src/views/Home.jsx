@@ -6,6 +6,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import LoginForm from "../components/LoginForm";
 import Header from "../components/Header";
+import withSpaceBackground from "../hoc/withSpaceBackground";
 
 const Home = () => {
   const { isLoading, isLoggedIn } = useAuth();
@@ -31,4 +32,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default withSpaceBackground(Home);
