@@ -1,6 +1,5 @@
 #login .form {
   border-radius: 5px;
-  margin-top: 25px;
   padding: 25px 0;
 }
 
@@ -13,7 +12,11 @@
 #login .form .button {
   width: 100%;
   background-color: var(--rebel-color);
+  font-size: 22px;
+  font-weight: 300;
 }
 #login h1 {
   margin: 15px 0;
+  font-size: 45px;
+  font-weight: 100;
 }
