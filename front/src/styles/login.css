@@ -13,8 +13,9 @@
   width: 100%;
   background-color: var(--rebel-color);
   font-size: 22px;
-  font-weight: 300;
+  font-weight: 200;
 }
+
 #login h1 {
   margin: 15px 0;
   font-size: 45px;

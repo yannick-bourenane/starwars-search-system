@@ -4,15 +4,17 @@
   box-sizing: border-box;
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Kanit:wght@100;300;400;500;600;700;900&display=swap");
-
 :root {
   --main-color: #fff;
   --main-color-hover: #ddd;
   --second-color: #333;
   --second-color-hover: #444;
   --rebel-color: #d14334;
+  --rebel-color-hover: #d3584a;
 }
+
+@import url("./hover.css");
+@import url("https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;500;600;700;900&display=swap");
 
 body {
   font-family: "Kanit", cursive, sans-serif;
