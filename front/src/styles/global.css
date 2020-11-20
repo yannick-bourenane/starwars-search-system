@@ -7,10 +7,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Red+Rose:wght@300;400;700&display=swap");
 
 :root {
-  --main-color: #f8e420;
-  --main-color-hover: #f7c820;
+  --main-color: #fff;
+  --main-color-hover: #ddd;
   --second-color: #333;
   --second-color-hover: #444;
+  --rebel-color: #d14334;
 }
 
 body {
@@ -31,10 +32,19 @@ b {
 .main-color {
   color: var(--main-color);
 }
-
-.button {
+.bg-main-color {
   background-color: var(--main-color);
-  color: var(--second-color);
+  color: #fff;
+}
+
+.rebel-color {
+  color: var(--rebel-color);
+}
+.bg-rebel-color {
+  background-color: var(--rebel-color);
+  color: #fff;
+}
+.button {
   border-radius: 5px;
   padding: 5px 8px;
   border: none;

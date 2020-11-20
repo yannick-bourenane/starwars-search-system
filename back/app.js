@@ -110,7 +110,7 @@ const init = async () => {
 
   server.auth.strategy("session", "cookie", {
     cookie: {
-      name: "empireCookie",
+      name: "rebelCookie",
       password: process.env.PASSWORD_COOKIE,
       // For working via HTTP in localhost
       isSecure: false,

@@ -5,7 +5,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import LoginForm from "../components/LoginForm";
-import Header from "../components/Header";
+import { FaRebel } from "react-icons/fa";
 import withSpaceBackground from "../hoc/withSpaceBackground";
 
 const Home = () => {
@@ -20,11 +20,11 @@ const Home = () => {
   if (isLoggedIn) return <Redirect to="/search" />;
 
   return (
-    <Container>
-      <Header />
-      <Row>
+    <Container id="login">
+      <Row className="align-items-center" style={{ height: "90vh" }}>
         <Col md={{ span: 6, offset: 3 }}>
-          <h2 className="main-color">Login Required</h2>
+          <FaRebel size="8em" className="rebel-color" />
+          <h1 className="main-color title">Rebel system access</h1>
           <LoginForm />
         </Col>
       </Row>

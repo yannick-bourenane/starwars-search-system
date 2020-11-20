@@ -34,7 +34,7 @@ const Header = (props) => {
           </button>
         </div>
       )}
-      <h1>Empire Database</h1>
+      <h1>Galaxy Database</h1>
     </header>
   );
 };

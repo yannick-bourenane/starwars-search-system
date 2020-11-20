@@ -1,9 +1,14 @@
 import React, { useState, useContext } from "react";
-
+import { FaKey } from "react-icons/fa";
+import { FaUserCircle } from "react-icons/fa";
 import Axios from "axios";
 
 import { withRouter } from "react-router-dom";
 import UserContext from "../auth/UserContext";
+
+import InputGroup from "react-bootstrap/InputGroup";
+import FormControl from "react-bootstrap/FormControl";
+import Button from "react-bootstrap/Button/";
 
 import "../styles/login.css";
 
@@ -39,25 +44,56 @@ const Login = (props) => {
   return (
     <form className="form">
       {msg && <p className="msg">{msg}</p>}
-      <input
-        className={"input"}
-        type="text"
-        placeholder="User"
-        required
-        onChange={(e) => setUsername(e.target.value)}
-        defaultValue={username ? username : ""}
-      />
-      <input
-        className={"input"}
-        type="password"
-        placeholder="Password"
-        required
-        onChange={(e) => setPassword(e.target.value)}
-        defaultValue={password ? password : ""}
-      />
-      <button className={"button"} onClick={handleSubmit}>
-        Sign in
-      </button>
+      <InputGroup className="input">
+        <InputGroup.Prepend>
+          <InputGroup.Text
+            id="user-icon"
+            className="bg-rebel-color"
+            style={{ border: "none" }}
+          >
+            <FaUserCircle size="1.2em" />
+          </InputGroup.Text>
+        </InputGroup.Prepend>
+        <FormControl
+          size="lg"
+          type="text"
+          placeholder="Username"
+          aria-label="Username"
+          aria-describedby="user-icon"
+          required
+          onChange={(e) => setUsername(e.target.value)}
+          defaultValue={username ? username : ""}
+        />
+      </InputGroup>
+      <InputGroup className="input">
+        <InputGroup.Prepend>
+          <InputGroup.Text
+            id="password-icon"
+            className="bg-rebel-color"
+            style={{ border: "none" }}
+          >
+            <FaKey size="1.2em" />
+          </InputGroup.Text>
+        </InputGroup.Prepend>
+        <FormControl
+          size="lg"
+          type="password"
+          placeholder="Password"
+          aria-label="Password"
+          aria-describedby="password-icon"
+          required
+          onChange={(e) => setPassword(e.target.value)}
+          defaultValue={password ? password : ""}
+        />
+      </InputGroup>
+      <Button
+        size="lg"
+        variant="secondary"
+        className={"button bg-rebel-color"}
+        onClick={handleSubmit}
+      >
+        ENTER
+      </Button>
     </form>
   );
 };

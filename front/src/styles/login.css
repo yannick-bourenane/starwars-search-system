@@ -1,13 +1,19 @@
-.form {
-  padding: 25px;
+#login .form {
   border-radius: 5px;
-  background-color: var(--second-color);
+  margin-top: 25px;
+  padding: 25px 0;
 }
 
-.form .input {
+#login .form .input {
   width: 100%;
   border-radius: 5px;
-  padding: 5px;
   border: none;
   margin-bottom: 15px;
+}
+#login .form .button {
+  width: 100%;
+  background-color: var(--rebel-color);
+}
+#login h1 {
+  margin: 15px 0;
 }

@@ -238,4 +238,4 @@ const DetailedSheet = (props) => {
   );
 };
 
-export default withRouter(withSpaceBackground(DetailedSheet));
+export default withSpaceBackground(withRouter(DetailedSheet));
