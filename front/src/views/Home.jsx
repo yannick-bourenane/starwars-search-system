@@ -24,7 +24,7 @@ const Home = () => {
       <Row className="align-items-center" style={{ height: "90vh" }}>
         <Col md={{ span: 6, offset: 3 }}>
           <FaRebel size="8em" className="rebel-color" />
-          <h1 className="main-color title">Rebel system access</h1>
+          <h1 className="main-color title">Galaxy database access</h1>
           <LoginForm />
         </Col>
       </Row>

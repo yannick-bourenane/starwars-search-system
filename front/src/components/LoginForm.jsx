@@ -89,7 +89,7 @@ const Login = (props) => {
       <Button
         size="lg"
         variant="secondary"
-        className={"button bg-rebel-color hvr-sweep-to-bottom"}
+        className={"button bg-rebel-color hvr-fade"}
         onClick={handleSubmit}
       >
         ENTER

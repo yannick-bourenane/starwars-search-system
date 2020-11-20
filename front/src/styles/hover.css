@@ -1260,7 +1260,7 @@
 .hvr-fade:hover,
 .hvr-fade:focus,
 .hvr-fade:active {
-  background-color: var(--rebel-color-hover);
+  background-color: var(--rebel-color-hover) !important;
   color: white;
 }
 
