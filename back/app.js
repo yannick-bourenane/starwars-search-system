@@ -6,7 +6,7 @@ const axios = require("axios");
 
 const users = [
   {
-    name: "Luke",
+    name: "stormtrooper#6879",
     password: process.env.PASSWORD,
     id: "1",
   },
@@ -110,7 +110,7 @@ const init = async () => {
 
   server.auth.strategy("session", "cookie", {
     cookie: {
-      name: "rebelCookie",
+      name: "empire",
       password: process.env.PASSWORD_COOKIE,
       // For working via HTTP in localhost
       isSecure: false,

@@ -32,8 +32,8 @@ $cd front
 $npm install
 \$npm start
 
-Login : Luke
-Password : DadSucks
+Login : stormtrooper#6879
+Password : R2D2RuinedUs
 
 ## Docs
 
