@@ -13,7 +13,7 @@ import Button from "react-bootstrap/Button/";
 import "../styles/login.css";
 
 const Login = (props) => {
-  const [username, setUsername] = useState("Luke");
+  const [username, setUsername] = useState("stormtrooper#6879");
   const [password, setPassword] = useState(process.env.REACT_APP_PASSWORD);
   const [msg, setMsg] = useState(null);
 
@@ -48,7 +48,7 @@ const Login = (props) => {
         <InputGroup.Prepend>
           <InputGroup.Text
             id="user-icon"
-            className="bg-rebel-color"
+            className="bg-empire-color"
             style={{ border: "none" }}
           >
             <FaUserCircle size="1.2em" />
@@ -69,7 +69,7 @@ const Login = (props) => {
         <InputGroup.Prepend>
           <InputGroup.Text
             id="password-icon"
-            className="bg-rebel-color"
+            className="bg-empire-color"
             style={{ border: "none" }}
           >
             <FaKey size="1.2em" />
@@ -89,7 +89,7 @@ const Login = (props) => {
       <Button
         size="lg"
         variant="secondary"
-        className={"button bg-rebel-color hvr-fade"}
+        className={"button bg-empire-color hvr-fade"}
         onClick={handleSubmit}
       >
         ENTER

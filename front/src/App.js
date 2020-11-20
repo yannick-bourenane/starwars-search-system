@@ -12,6 +12,8 @@ import DetailedSheet from "./views/DetailedSheet";
 import { useAuth } from "./auth/useAuth";
 import UserContext from "./auth/UserContext";
 import { ProtectedRoute } from "./auth/ProtectedRoute";
+import Footer from "./components/Footer";
+import FooterBottom from "./components/wrap/FooterBottom";
 
 function App() {
   const { isLoading } = useAuth();
@@ -26,12 +28,17 @@ function App() {
     <UserContext.Provider value={UserContextValue}>
       {isLoading ? null : (
         <div className="App">
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <ProtectedRoute exact path="/search" component={Search} />
-            <ProtectedRoute exact path="/detailed" component={DetailedSheet} />
-            <Route path="*" component={NotFound} />
-          </Switch>
+          <FooterBottom>
+            <div className="pre-footer">
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <ProtectedRoute exact path="/search" component={Search} />
+              <ProtectedRoute exact path="/detailed" component={DetailedSheet} />
+              <Route path="*" component={NotFound} />
+            </Switch>
+            </div>
+            <Footer />
+          </FooterBottom>
         </div>
       )}
     </UserContext.Provider>

@@ -1260,7 +1260,7 @@
 .hvr-fade:hover,
 .hvr-fade:focus,
 .hvr-fade:active {
-  background-color: var(--rebel-color-hover) !important;
+  background-color: var(--empire-color-hover) !important;
   color: white;
 }
 
@@ -1300,8 +1300,8 @@
   animation-timing-function: linear;
   -webkit-animation-iteration-count: infinite;
   animation-iteration-count: infinite;
-  background-color: var(--rebel-color-hover);
-  background-color: var(--rebel-color-hover);
+  background-color: var(--empire-color-hover);
+  background-color: var(--empire-color-hover);
   color: white;
 }
 
@@ -1326,7 +1326,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: var(--rebel-color-hover);
+  background: var(--empire-color-hover);
   -webkit-transform: scaleX(0);
   transform: scaleX(0);
   -webkit-transform-origin: 0 50%;
@@ -1371,7 +1371,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: var(--rebel-color-hover);
+  background: var(--empire-color-hover);
   -webkit-transform: scaleX(0);
   transform: scaleX(0);
   -webkit-transform-origin: 100% 50%;
@@ -1416,7 +1416,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: var(--rebel-color-hover);
+  background: var(--empire-color-hover);
   -webkit-transform: scaleY(0);
   transform: scaleY(0);
   -webkit-transform-origin: 50% 0;
@@ -1461,7 +1461,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: var(--rebel-color-hover);
+  background: var(--empire-color-hover);
   -webkit-transform: scaleY(0);
   transform: scaleY(0);
   -webkit-transform-origin: 50% 100%;
@@ -1506,7 +1506,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: var(--rebel-color-hover);
+  background: var(--empire-color-hover);
   -webkit-transform: scaleX(0);
   transform: scaleX(0);
   -webkit-transform-origin: 0 50%;
@@ -1553,7 +1553,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: var(--rebel-color-hover);
+  background: var(--empire-color-hover);
   -webkit-transform: scaleX(0);
   transform: scaleX(0);
   -webkit-transform-origin: 100% 50%;
@@ -1600,7 +1600,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: var(--rebel-color-hover);
+  background: var(--empire-color-hover);
   -webkit-transform: scaleY(0);
   transform: scaleY(0);
   -webkit-transform-origin: 50% 0;
@@ -1647,7 +1647,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: var(--rebel-color-hover);
+  background: var(--empire-color-hover);
   -webkit-transform: scaleY(0);
   transform: scaleY(0);
   -webkit-transform-origin: 50% 100%;
@@ -1682,7 +1682,7 @@
   box-shadow: 0 0 1px rgba(0, 0, 0, 0);
   position: relative;
   overflow: hidden;
-  background: var(--rebel-color);
+  background: var(--empire-color);
   -webkit-transition-property: color;
   transition-property: color;
   -webkit-transition-duration: 0.3s;
@@ -1696,7 +1696,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: var(--rebel-color-hover);
+  background: var(--empire-color-hover);
   border-radius: 100%;
   -webkit-transform: scale(0);
   transform: scale(0);
@@ -1728,7 +1728,7 @@
   box-shadow: 0 0 1px rgba(0, 0, 0, 0);
   position: relative;
   overflow: hidden;
-  background: var(--rebel-color-hover);
+  background: var(--empire-color-hover);
   -webkit-transition-property: color;
   transition-property: color;
   -webkit-transition-duration: 0.3s;
@@ -1742,7 +1742,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: var(--rebel-color);
+  background: var(--empire-color);
   border-radius: 100%;
   -webkit-transform: scale(2);
   transform: scale(2);
@@ -1773,7 +1773,7 @@
   transform: perspective(1px) translateZ(0);
   box-shadow: 0 0 1px rgba(0, 0, 0, 0);
   position: relative;
-  background: var(--rebel-color-hover);
+  background: var(--empire-color-hover);
   -webkit-transition-property: color;
   transition-property: color;
   -webkit-transition-duration: 0.3s;
@@ -1787,7 +1787,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: var(--rebel-color);
+  background: var(--empire-color);
   -webkit-transform: scale(1);
   transform: scale(1);
   -webkit-transition-property: transform;
@@ -1817,7 +1817,7 @@
   transform: perspective(1px) translateZ(0);
   box-shadow: 0 0 1px rgba(0, 0, 0, 0);
   position: relative;
-  background: var(--rebel-color);
+  background: var(--empire-color);
   -webkit-transition-property: color;
   transition-property: color;
   -webkit-transition-duration: 0.3s;
@@ -1831,7 +1831,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: var(--rebel-color-hover);
+  background: var(--empire-color-hover);
   -webkit-transform: scale(0);
   transform: scale(0);
   -webkit-transition-property: transform;
@@ -1861,7 +1861,7 @@
   transform: perspective(1px) translateZ(0);
   box-shadow: 0 0 1px rgba(0, 0, 0, 0);
   position: relative;
-  background: var(--rebel-color-hover);
+  background: var(--empire-color-hover);
   -webkit-transition-property: color;
   transition-property: color;
   -webkit-transition-duration: 0.3s;
@@ -1875,7 +1875,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background: var(--rebel-color);
+  background: var(--empire-color);
   -webkit-transform: scaleX(1);
   transform: scaleX(1);
   -webkit-transform-origin: 50%;
@@ -1907,7 +1907,7 @@
   transform: perspective(1px) translateZ(0);
   box-shadow: 0 0 1px rgba(0, 0, 0, 0);
   position: relative;
-  background: var(--rebel-color);
+  background: var(--empire-color);
   -webkit-transition-property: color;
   transition-property: color;
   -webkit-transition-duration: 0.3s;
@@ -1921,7 +1921,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background: var(--rebel-color-hover);
+  background: var(--empire-color-hover);
   -webkit-transform: scaleX(0);
   transform: scaleX(0);
   -webkit-transform-origin: 50%;
@@ -1953,7 +1953,7 @@
   transform: perspective(1px) translateZ(0);
   box-shadow: 0 0 1px rgba(0, 0, 0, 0);
   position: relative;
-  background: var(--rebel-color-hover);
+  background: var(--empire-color-hover);
   -webkit-transition-property: color;
   transition-property: color;
   -webkit-transition-duration: 0.3s;
@@ -1967,7 +1967,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background: var(--rebel-color);
+  background: var(--empire-color);
   -webkit-transform: scaleY(1);
   transform: scaleY(1);
   -webkit-transform-origin: 50%;
@@ -1999,7 +1999,7 @@
   transform: perspective(1px) translateZ(0);
   box-shadow: 0 0 1px rgba(0, 0, 0, 0);
   position: relative;
-  background: var(--rebel-color);
+  background: var(--empire-color);
   -webkit-transition-property: color;
   transition-property: color;
   -webkit-transition-duration: 0.3s;
@@ -2013,7 +2013,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background: var(--rebel-color-hover);
+  background: var(--empire-color-hover);
   -webkit-transform: scaleY(0);
   transform: scaleY(0);
   -webkit-transform-origin: 50%;
@@ -2049,13 +2049,14 @@
   transition-duration: 0.3s;
   -webkit-transition-property: box-shadow;
   transition-property: box-shadow;
-  box-shadow: inset 0 0 0 4px var(--rebel-color), 0 0 1px rgba(0, 0, 0, 0);
+  box-shadow: inset 0 0 0 4px var(--empire-color), 0 0 1px rgba(0, 0, 0, 0);
   /* Hack to improve aliasing on mobile/tablet devices */
 }
 .hvr-border-fade:hover,
 .hvr-border-fade:focus,
 .hvr-border-fade:active {
-  box-shadow: inset 0 0 0 4px var(--rebel-color-hover), 0 0 1px rgba(0, 0, 0, 0);
+  box-shadow: inset 0 0 0 4px var(--empire-color-hover),
+    0 0 1px rgba(0, 0, 0, 0);
   /* Hack to improve aliasing on mobile/tablet devices */
 }
 
@@ -2070,7 +2071,7 @@
   transition-duration: 0.3s;
   -webkit-transition-property: background;
   transition-property: background;
-  box-shadow: inset 0 0 0 4px var(--rebel-color), 0 0 1px rgba(0, 0, 0, 0);
+  box-shadow: inset 0 0 0 4px var(--empire-color), 0 0 1px rgba(0, 0, 0, 0);
   /* Hack to improve aliasing on mobile/tablet devices */
 }
 .hvr-hollow:hover,
@@ -2138,7 +2139,7 @@
 .hvr-ripple-out:before {
   content: "";
   position: absolute;
-  border: var(--rebel-color) solid 6px;
+  border: var(--empire-color) solid 6px;
   top: 0;
   right: 0;
   bottom: 0;
@@ -2183,7 +2184,7 @@
 .hvr-ripple-in:before {
   content: "";
   position: absolute;
-  border: var(--rebel-color) solid 4px;
+  border: var(--empire-color) solid 4px;
   top: -12px;
   right: -12px;
   bottom: -12px;
@@ -2211,7 +2212,7 @@
 .hvr-outline-out:before {
   content: "";
   position: absolute;
-  border: var(--rebel-color) solid 4px;
+  border: var(--empire-color) solid 4px;
   top: 0;
   right: 0;
   bottom: 0;
@@ -2243,7 +2244,7 @@
   pointer-events: none;
   content: "";
   position: absolute;
-  border: var(--rebel-color) solid 4px;
+  border: var(--empire-color) solid 4px;
   top: -16px;
   right: -16px;
   bottom: -16px;
@@ -2299,7 +2300,7 @@
   left: 0;
   right: 100%;
   bottom: 0;
-  background: var(--rebel-color-hover);
+  background: var(--empire-color-hover);
   height: 4px;
   -webkit-transition-property: right;
   transition-property: right;
@@ -2331,7 +2332,7 @@
   left: 51%;
   right: 51%;
   bottom: 0;
-  background: var(--rebel-color-hover);
+  background: var(--empire-color-hover);
   height: 4px;
   -webkit-transition-property: left, right;
   transition-property: left, right;
@@ -2364,7 +2365,7 @@
   left: 100%;
   right: 0;
   bottom: 0;
-  background: var(--rebel-color-hover);
+  background: var(--empire-color-hover);
   height: 4px;
   -webkit-transition-property: left;
   transition-property: left;
@@ -2396,7 +2397,7 @@
   left: 0;
   right: 100%;
   top: 0;
-  background: var(--rebel-color-hover);
+  background: var(--empire-color-hover);
   height: 4px;
   -webkit-transition-property: right;
   transition-property: right;
@@ -2428,7 +2429,7 @@
   left: 51%;
   right: 51%;
   top: 0;
-  background: var(--rebel-color-hover);
+  background: var(--empire-color-hover);
   height: 4px;
   -webkit-transition-property: left, right;
   transition-property: left, right;
@@ -2461,7 +2462,7 @@
   left: 100%;
   right: 0;
   top: 0;
-  background: var(--rebel-color-hover);
+  background: var(--empire-color-hover);
   height: 4px;
   -webkit-transition-property: left;
   transition-property: left;
@@ -2494,7 +2495,7 @@
   right: 0;
   top: 0;
   bottom: 0;
-  border-color: var(--rebel-color-hover);
+  border-color: var(--empire-color-hover);
   border-style: solid;
   border-width: 0;
   -webkit-transition-property: border-width;
@@ -2529,7 +2530,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: var(--rebel-color-hover);
+  background: var(--empire-color-hover);
   height: 4px;
   -webkit-transform: translateY(4px);
   transform: translateY(4px);
@@ -2564,7 +2565,7 @@
   left: 0;
   right: 0;
   top: 0;
-  background: var(--rebel-color-hover);
+  background: var(--empire-color-hover);
   height: 4px;
   -webkit-transform: translateY(-4px);
   transform: translateY(-4px);
@@ -2819,7 +2820,7 @@
   left: calc(50% - 10px);
   top: 0;
   border-width: 0 10px 10px 10px;
-  border-color: transparent transparent var(--rebel-color) transparent;
+  border-color: transparent transparent var(--empire-color) transparent;
 }
 .hvr-bubble-top:hover:before,
 .hvr-bubble-top:focus:before,
@@ -2850,7 +2851,7 @@
   top: calc(50% - 10px);
   right: 0;
   border-width: 10px 0 10px 10px;
-  border-color: transparent transparent transparent var(--rebel-color);
+  border-color: transparent transparent transparent var(--empire-color);
 }
 .hvr-bubble-right:hover:before,
 .hvr-bubble-right:focus:before,
@@ -2881,7 +2882,7 @@
   left: calc(50% - 10px);
   bottom: 0;
   border-width: 10px 10px 0 10px;
-  border-color: var(--rebel-color) transparent transparent transparent;
+  border-color: var(--empire-color) transparent transparent transparent;
 }
 .hvr-bubble-bottom:hover:before,
 .hvr-bubble-bottom:focus:before,
@@ -2912,7 +2913,7 @@
   top: calc(50% - 10px);
   left: 0;
   border-width: 10px 10px 10px 0;
-  border-color: transparent var(--rebel-color) transparent transparent;
+  border-color: transparent var(--empire-color) transparent transparent;
 }
 .hvr-bubble-left:hover:before,
 .hvr-bubble-left:focus:before,
@@ -2942,7 +2943,7 @@
   top: 0;
   border-style: solid;
   border-width: 0 10px 10px 10px;
-  border-color: transparent transparent var(--rebel-color) transparent;
+  border-color: transparent transparent var(--empire-color) transparent;
   -webkit-transition-duration: 0.3s;
   transition-duration: 0.3s;
   -webkit-transition-property: transform;
@@ -2982,7 +2983,7 @@
   content: "";
   border-style: solid;
   border-width: 10px 0 10px 10px;
-  border-color: transparent transparent transparent var(--rebel-color);
+  border-color: transparent transparent transparent var(--empire-color);
   -webkit-transition-duration: 0.3s;
   transition-duration: 0.3s;
   -webkit-transition-property: transform;
@@ -3022,7 +3023,7 @@
   bottom: 0;
   border-style: solid;
   border-width: 10px 10px 0 10px;
-  border-color: var(--rebel-color) transparent transparent transparent;
+  border-color: var(--empire-color) transparent transparent transparent;
   -webkit-transition-duration: 0.3s;
   transition-duration: 0.3s;
   -webkit-transition-property: transform;
@@ -3062,7 +3063,7 @@
   left: 0;
   border-style: solid;
   border-width: 10px 10px 10px 0;
-  border-color: transparent var(--rebel-color) transparent transparent;
+  border-color: transparent var(--empire-color) transparent transparent;
   -webkit-transition-duration: 0.3s;
   transition-duration: 0.3s;
   -webkit-transition-property: transform;

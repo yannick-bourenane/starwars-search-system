@@ -7,10 +7,10 @@
 :root {
   --main-color: #fff;
   --main-color-hover: #ddd;
-  --second-color: #333;
+  --second-color: #d14334;
   --second-color-hover: #444;
-  --rebel-color: #d14334;
-  --rebel-color-hover: #d3584a;
+  --empire-color: #333;
+  --empire-color-hover: #d14334;
 }
 
 @import url("./hover.css");
@@ -18,14 +18,19 @@
 
 body {
   font-family: "Kanit", cursive, sans-serif;
-  color: #999;
+  color: #fff;
 }
 
 .App {
   min-height: 100vh;
   text-align: center;
 }
-
+.loading-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+}
 strong,
 b {
   font-weight: 700;
@@ -34,16 +39,19 @@ b {
 .main-color {
   color: var(--main-color);
 }
+.second-color {
+  color: var(--second-color);
+}
 .bg-main-color {
   background-color: var(--main-color);
   color: #fff;
 }
 
-.rebel-color {
-  color: var(--rebel-color);
+.empire-color {
+  color: var(--empire-color);
 }
-.bg-rebel-color {
-  background-color: var(--rebel-color);
+.bg-empire-color {
+  background-color: var(--empire-color);
   color: #fff;
 }
 .button {

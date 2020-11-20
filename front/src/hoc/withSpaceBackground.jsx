@@ -5,9 +5,10 @@ const withSpaceBackground = (WrappedComponent) => {
   return () => {
     return (
       <>
-        <div id="stars"></div>
-        <div id="stars2"></div>
-        <div id="stars3"></div>
+        <div id="stars" className="stars"></div>
+        <div id="stars2" className="stars"></div>
+        <div id="stars3" className="stars"></div>
+        <div id="death-star"></div>
         <WrappedComponent />
       </>
     );

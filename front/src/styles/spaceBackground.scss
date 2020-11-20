@@ -15,10 +15,22 @@ $shadows-big: multiple-box-shadow(100);
 
 .App {
   height: 100%;
-  background: radial-gradient(ellipse at bottom, #111923 0%, #090a0f 100%);
+  background: radial-gradient(ellipse at bottom, #06090e 0%, #090a0f 100%);
   overflow: hidden;
 }
-
+// #death-star {
+//   background: url("../assets/img/pngwing.com.png") no-repeat top right;
+//   background-size: contain;
+//   width: 300px;
+//   height: 300px;
+//   position: absolute;
+//   right: 70%;
+//   z-index: 70;
+// }
+.stars {
+  position: relative;
+  z-index: 50;
+}
 #stars {
   width: 1px;
   height: 1px;

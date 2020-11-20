@@ -23,7 +23,19 @@ header .welcome-user {
 header .welcome-user .button {
   margin-left: 15px;
 }
-
+header .logout {
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+header .logout svg {
+  margin-left: 5px;
+}
+header .logout:hover {
+  text-decoration: underline;
+}
 /*glow*/
 
 @keyframes neon3 {

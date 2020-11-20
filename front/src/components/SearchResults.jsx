@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import { Link, withRouter } from "react-router-dom";
 import { useSelector } from "react-redux";
+import Spinner from "react-bootstrap/Spinner";
 
 const SearchResults = (props) => {
   const search = useSelector((state) => state.searchValue);
@@ -81,7 +82,9 @@ const SearchResults = (props) => {
       ) : !loading && data === "No results" ? (
         <div>No results</div>
       ) : (
-        <div>Loading...</div>
+        <div className="loading">
+          <Spinner animation="border" variant="danger" />
+        </div>
       )}
     </>
   );

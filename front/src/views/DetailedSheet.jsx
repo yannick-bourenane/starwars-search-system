@@ -10,6 +10,7 @@ import "../styles/detail.css";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Spinner from "react-bootstrap/Spinner";
 import withSpaceBackground from "../hoc/withSpaceBackground";
 
 import Header from "../components/Header";
@@ -160,14 +161,14 @@ const DetailedSheet = (props) => {
                 <Link to="/search" onClick={() => linkBreadcrumb([])}>
                   Search
                 </Link>{" "}
-                >{" "}
+                &gt;{" "}
                 <Link
                   to="/search"
                   onClick={() => linkBreadcrumb([props.location.state.type])}
                 >
                   {props.location.state.type}
                 </Link>{" "}
-                > {infos.name || infos.title}
+                &gt; {infos.name || infos.title}
               </div>
               <button className="button" onClick={() => props.history.goBack()}>
                 &lt; Retour
@@ -230,7 +231,7 @@ const DetailedSheet = (props) => {
           </Col>
         ) : (
           <Col md={{ span: 8, offset: 2 }}>
-            <h1>Loading...</h1>
+            <Spinner animation="border" variant="danger" />
           </Col>
         )}
       </Row>

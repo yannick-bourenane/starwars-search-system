@@ -8,12 +8,18 @@ import FilterByType from "../components/filters/FilterByType";
 import SearchResults from "../components/SearchResults";
 import withSpaceBackground from "../hoc/withSpaceBackground";
 import "../styles/search.css";
+import Footer from "../components/Footer";
+import Spinner from "react-bootstrap/Spinner";
 
 const Search = () => {
   const { isLoading, isLoggedIn } = useAuth();
 
   if (isLoading)
-    return <div className="flex-center-column loading">Loading...</div>;
+    return (
+      <div className="flex-center-column loading">
+        <Spinner animation="border" variant="danger" />
+      </div>
+    );
   if (!isLoggedIn) return <Redirect to="/" />;
 
   return (

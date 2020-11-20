@@ -7,6 +7,8 @@ import { withRouter } from "react-router-dom";
 import Axios from "axios";
 import "../styles/header.css";
 
+import { BsPower } from "react-icons/bs";
+
 const Header = (props) => {
   const userContext = useContext(UserContext);
   const { currentUser } = userContext;
@@ -28,10 +30,15 @@ const Header = (props) => {
     <header>
       {currentUser && (
         <div className="welcome-user">
-          <strong>Logged in as {currentUser.name}</strong>{" "}
-          <button className="button" onClick={handleLogout}>
+          <div
+            aria-label="Logout"
+            aria-describedby="logout-icon"
+            className="logout"
+            onClick={handleLogout}
+          >
             Logout
-          </button>
+            <BsPower />
+          </div>
         </div>
       )}
       <h1>Galaxy Database</h1>
