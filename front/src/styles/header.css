@@ -3,16 +3,16 @@ header {
 }
 
 header h1 {
-  color: var(--main-color);
+  color: var(--second-color);
   font-size: 90px;
   font-weight: 100;
   margin-bottom: 25px;
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
   transition: all 0.5s;
-  -webkit-animation: neon3 1.5s ease-in-out infinite alternate;
-  -moz-animation: neon3 1.5s ease-in-out infinite alternate;
-  animation: neon3 1.5s ease-in-out infinite alternate;
+  -webkit-animation: neon3 3.5s ease-in-out infinite alternate;
+  -moz-animation: neon3 3.5s ease-in-out infinite alternate;
+  animation: neon3 3.5s ease-in-out infinite alternate;
 }
 
 header .welcome-user {
@@ -40,15 +40,17 @@ header .logout:hover {
 
 @keyframes neon3 {
   from {
-    text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 2px #fff,
-      0 0 3px var(--main-color), 0 0 7px var(--main-color),
-      0 0 3px var(--main-color), 0 0 3px var(--main-color),
-      0 0 9px var(--main-color);
+    color: var(--main-color);
+    text-shadow: 0 0 1px var(--main-color), 0 0 2px var(--main-color),
+      0 0 2px var(--main-color), 0 0 3px var(--main-color),
+      0 0 7px var(--main-color), 0 0 3px var(--main-color),
+      0 0 3px var(--main-color), 0 0 9px var(--main-color);
   }
   to {
-    text-shadow: 0 0 0.5px #fff, 0 0 1px #fff, 0 0 1.5px #fff,
-      0 0 2px var(--main-color), 0 0 3.5px var(--main-color),
-      0 0 2px var(--main-color), 0 0 2.5px var(--main-color),
-      0 0 7.5px var(--main-color);
+    color: var(--main-color);
+    text-shadow: 0 0 0.5px var(--main-color), 0 0 1px var(--main-color),
+      0 0 1.5px var(--main-color), 0 0 2px var(--main-color),
+      0 0 3.5px var(--main-color), 0 0 2px var(--main-color),
+      0 0 2.5px var(--main-color), 0 0 7.5px var(--main-color);
   }
 }

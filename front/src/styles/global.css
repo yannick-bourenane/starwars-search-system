@@ -10,9 +10,12 @@
   --second-color: #d14334;
   --second-color-hover: #444;
   --empire-color: #333;
-  --empire-color-hover: #d14334;
+  --empire-color-hover: #d43625;
 }
-
+::selection {
+  color: var(--main-color);
+  background: var(--second-color);
+}
 @import url("./hover.css");
 @import url("https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;500;600;700;900&display=swap");
 
@@ -20,7 +23,9 @@ body {
   font-family: "Kanit", cursive, sans-serif;
   color: #fff;
 }
-
+button {
+  user-select: none;
+}
 .App {
   min-height: 100vh;
   text-align: center;

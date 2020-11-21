@@ -3,105 +3,111 @@ input.search {
   padding: 15px;
   border-radius: 5px 0 0 5px;
   border: none;
+  height: 54px;
+  font-size: 22px;
+  font-weight: 200;
+  color: var(--second-color);
 }
 
 .all-types {
   margin: 15px 0;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  grid-column-gap: 10px;
+  grid-column-gap: 20px;
 }
 
 .all-types .type.is-selected,
 .all-types .type:hover {
   cursor: pointer;
-  background-color: var(--empire-color-hover);
+  background-color: var(--second-color);
   color: #fff;
 }
 
 .search-results {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(356px, 1fr));
   grid-column-gap: 20px;
   grid-row-gap: 20px;
 }
 
 .result {
-  min-height: 219px;
-  padding: 12px;
-  background-size: auto 50% !important;
+  min-height: 0;
+  padding: 0;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   align-items: center;
-  flex-direction: column;
+  flex-direction: flex;
+  border-radius: 5px;
+  background-color: var(--empire-color);
 }
 
-.result.type-films,
+.result.type-films h4,
 .type.type-films {
   background: url("../assets/img/icons/film.svg") center center no-repeat
     var(--second-color);
 }
 
 .type.type-films:hover,
-.type.type-films.type.is-selected {
+.type.type-films.type.is-selected,
+.result.type-films .type-icon {
   background: url("../assets/img/icons/film-white.svg") center center no-repeat
     var(--second-color);
 }
 
-.result.type-people,
 .type.type-people {
   background: url("../assets/img/icons/people.svg") center center no-repeat
     var(--second-color);
 }
 .type.type-people:hover,
-.type.type-people.type.is-selected {
+.type.type-people.type.is-selected,
+.result.type-people .type-icon {
   background: url("../assets/img/icons/people-white.svg") center center
     no-repeat var(--second-color);
 }
 
-.result.type-planets,
 .type.type-planets {
   background: url("../assets/img/icons/planet.svg") center center no-repeat
     var(--second-color);
 }
 
 .type.type-planets:hover,
-.type.type-planets.type.is-selected {
+.type.type-planets.type.is-selected,
+.result.type-planets .type-icon {
   background: url("../assets/img/icons/planet-white.svg") center center
     no-repeat var(--second-color);
 }
 
-.result.type-species,
 .type.type-species {
   background: url("../assets/img/icons/species.svg") center center no-repeat
     var(--second-color);
 }
 
 .type.type-species:hover,
-.type.type-species.type.is-selected {
+.type.type-species.type.is-selected,
+.result.type-species .type-icon {
   background: url("../assets/img/icons/species-white.svg") center center
     no-repeat var(--second-color);
 }
 
-.result.type-starships,
 .type.type-starships {
   background: url("../assets/img/icons/starship.svg") center center no-repeat
     var(--second-color);
 }
 .type.type-starships:hover,
-.type.type-starships.type.is-selected {
+.type.type-starships.type.is-selected,
+.result.type-starships .type-icon {
   background: url("../assets/img/icons/starship-white.svg") center center
     no-repeat var(--second-color);
 }
 
-.result.type-vehicles,
 .type.type-vehicles {
   background: url("../assets/img/icons/vehicle.svg") center center no-repeat
     var(--second-color);
 }
 
 .type.type-vehicles:hover,
-.type.type-vehicles.type.is-selected {
+.type.type-vehicles.type.is-selected,
+.result.type-vehicles .type-icon {
   background: url("../assets/img/icons/vehicle-white.svg") center center
     no-repeat var(--second-color);
 }
@@ -110,35 +116,50 @@ input.search {
   padding: 5px 12px;
   margin-bottom: 10px;
   border-radius: 5px;
-  background-position-x: 15px;
+  background-position-x: 5%;
   background-size: auto 85%;
   text-transform: capitalize;
   font-weight: 300;
+  user-select: none;
+  color: #ccc;
 }
 .all-types .type:hover,
 .all-types .type.is-selected {
-  background-position-x: 15px !important;
+  background-position-x: 5% !important;
   background-size: auto 85% !important;
 }
-
-.result:hover {
-  background-color: var(--second-color-hover);
-}
-
 .search-results a,
 .search-results a:hover {
   color: var(--main-color);
   text-decoration: none;
 }
 
+.search-results a h2 {
+  font-weight: 200;
+  margin-bottom: 0;
+  font-size: 27px;
+  text-align: left;
+  padding: 0 20px;
+  overflow: hidden;
+  display: -webkit-inline-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
 .search-results a h3 {
   color: #fff;
   font-size: 1rem;
 }
 
-.search-results h4 {
-  font-style: italic;
-  font-size: 1rem;
+.search-results .type-icon {
+  padding: 0px;
+  height: 80px;
+  min-width: 80px;
+  background-size: auto 70% !important;
+  display: inline-block;
+  border-radius: 5px 0 0 5px;
+}
+.search-results a:hover .result {
+  background-color: var(--second-color-hover);
 }
 .search-bar {
   display: flex;
@@ -154,4 +175,14 @@ input.search {
   justify-content: center;
   width: 55px;
   border-radius: 0 5px 5px 0;
+}
+.waiting-search-text {
+  font-size: 22px;
+  font-weight: 100;
+}
+.result-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
 }

@@ -60,7 +60,6 @@ const Login = (props) => {
           placeholder="Username"
           aria-label="Username"
           aria-describedby="user-icon"
-          required
           onChange={(e) => setUsername(e.target.value)}
           defaultValue={username ? username : ""}
         />
@@ -81,7 +80,6 @@ const Login = (props) => {
           placeholder="Password"
           aria-label="Password"
           aria-describedby="password-icon"
-          required
           onChange={(e) => setPassword(e.target.value)}
           defaultValue={password ? password : ""}
         />

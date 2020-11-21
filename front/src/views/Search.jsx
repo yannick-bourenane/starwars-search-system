@@ -8,7 +8,6 @@ import FilterByType from "../components/filters/FilterByType";
 import SearchResults from "../components/SearchResults";
 import withSpaceBackground from "../hoc/withSpaceBackground";
 import "../styles/search.css";
-import Footer from "../components/Footer";
 import Spinner from "react-bootstrap/Spinner";
 
 const Search = () => {

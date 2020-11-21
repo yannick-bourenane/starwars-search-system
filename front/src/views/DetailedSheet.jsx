@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { withRouter, Link } from "react-router-dom";
 import Axios from "axios";
 import { useDispatch } from "react-redux";
@@ -32,29 +32,29 @@ const DetailedSheet = (props) => {
   const [vehicles, setVehicles] = useState([]);
   const [starships, setStarships] = useState([]);
 
-  const getSpecies = async (obj) => {
+  const getSpecies = useCallback(async (obj) => {
     let result = await linkToSpecific(obj);
     setSpecies(result);
-  };
-  const getVehicles = async (obj) => {
+  }, []);
+  const getVehicles = useCallback(async (obj) => {
     let result = await linkToSpecific(obj);
     setVehicles(result);
-  };
-  const getStarships = async (obj) => {
+  }, []);
+  const getStarships = useCallback(async (obj) => {
     let result = await linkToSpecific(obj);
     setStarships(result);
-  };
+  }, []);
 
-  const getHomeWorld = async (obj) => {
+  const getHomeWorld = useCallback(async (obj) => {
     let result = await linkToSpecific(obj);
     setHomeWorld(result);
-  };
-  const getPeople = async (obj) => {
+  }, []);
+  const getPeople = useCallback(async (obj) => {
     let result = await linkToSpecific(obj);
     setPeople(result);
-  };
+  }, []);
 
-  const getDeepInfos = () => {
+  const getDeepInfos = useCallback(() => {
     if ("species" in infos && infos.species.length)
       getSpecies({ type: "species", arr: infos.species });
     else setSpecies([]);
@@ -98,12 +98,12 @@ const DetailedSheet = (props) => {
     if ("residents" in infos && infos.residents.length)
       getPeople({ type: "people", label: "residents", arr: infos.residents });
     else setPeople([]);
-  };
+  }, [infos, getSpecies, getVehicles, getStarships, getHomeWorld, getPeople]);
   useEffect(() => {
     if (Object.keys(infos).length > 0) getDeepInfos();
-  }, [infos]);
+  }, [infos, getDeepInfos]);
 
-  const getSpecificData = async () => {
+  const getSpecificData = useCallback(async () => {
     setLoading(true);
     let fetchData = await Axios.post(
       process.env.REACT_APP_BACKEND_URL + "/specific",
@@ -121,7 +121,7 @@ const DetailedSheet = (props) => {
           props.history.push("/");
       });
     return fetchData;
-  };
+  }, [props.history, props.location.state.url]);
   const linkBreadcrumb = (type) => {
     dispatch(searchValue(""));
     dispatch(typeValues(type));
@@ -148,7 +148,7 @@ const DetailedSheet = (props) => {
 
   useEffect(() => {
     getSpecificData();
-  }, [props.location.state.url]);
+  }, [props.location.state.url, getSpecificData]);
 
   return (
     <Container>

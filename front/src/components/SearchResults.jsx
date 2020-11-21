@@ -1,8 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import Axios from "axios";
 import { Link, withRouter } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Spinner from "react-bootstrap/Spinner";
+import LazyLoad from "react-lazyload";
+
+const PlaceholderComponent = () => {
+  return (
+    <div className={"result result-loading"}>
+      <Spinner animation="border" variant="danger" />
+    </div>
+  );
+};
 
 const SearchResults = (props) => {
   const search = useSelector((state) => state.searchValue);
@@ -10,24 +19,27 @@ const SearchResults = (props) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const handleFilter = async (apiRes) => {
-    try {
-      setLoading(true);
-      let res = await apiRes;
-      if (!!res.data) {
-        res.data.data.length === 0
-          ? setData("No results")
-          : setData(res.data.data);
-      } else {
-        throw new Error("Error with the search");
+  const handleFilter = useCallback(
+    async (apiRes) => {
+      try {
+        setLoading(true);
+        const res = await apiRes;
+        if (!!res.data) {
+          res.data.data.length === 0
+            ? setData("No results")
+            : setData(res.data.data);
+        } else {
+          throw new Error("Error with the search");
+        }
+        setLoading(false);
+      } catch (err) {
+        console.log(err);
+        if ("response" in err && err.response.status === 401)
+          props.history.push("/");
       }
-      setLoading(false);
-    } catch (err) {
-      console.log(err);
-      if ("response" in err && err.response.status === 401)
-        props.history.push("/");
-    }
-  };
+    },
+    [props.history]
+  );
 
   useEffect(() => {
     const cancel = Axios.CancelToken.source();
@@ -54,31 +66,43 @@ const SearchResults = (props) => {
     return () => {
       cancel.cancel();
     };
-  }, [types, search]);
+  }, [types, search, handleFilter]);
 
   return (
     <>
       {!loading && data !== null && Array.isArray(data) && data.length > 0 ? (
         data.map((content, i) => (
-          <Link
+          <LazyLoad
+            height={80}
+            offset={100}
+            placeholder={<PlaceholderComponent />}
+            debounce={100}
             key={i}
-            to={{
-              pathname: "/detailed",
-              state: {
-                url: content.url,
-                type: content.type,
-              },
-            }}
           >
-            <div className={"result type-" + content.type} key={content.name}>
-              <h2>{content.name}</h2>
-              {content.model && <h3>Modèle : {content.model}</h3>}
-              <h4>{content.type}</h4>
-            </div>
-          </Link>
+            <Link
+              to={{
+                pathname: "/detailed",
+                state: {
+                  url: content.url,
+                  type: content.type,
+                },
+              }}
+            >
+              <div
+                className={"result type-" + content.type}
+                key={content.name}
+                title={content.name}
+              >
+                <div className="type-icon"></div>
+                <h2>{content.name}</h2>
+              </div>
+            </Link>
+          </LazyLoad>
         ))
       ) : !loading && data === null ? (
-        <div>Type something or select a type of content</div>
+        <div className="waiting-search-text">
+          Type something or select a type of content
+        </div>
       ) : !loading && data === "No results" ? (
         <div>No results</div>
       ) : (

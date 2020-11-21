@@ -9,7 +9,6 @@ import Spinner from "react-bootstrap/Spinner";
 import LoginForm from "../components/LoginForm";
 import { FaEmpire } from "react-icons/fa";
 import withSpaceBackground from "../hoc/withSpaceBackground";
-import Footer from "../components/Footer";
 
 const Home = () => {
   const { isLoading, isLoggedIn } = useAuth();

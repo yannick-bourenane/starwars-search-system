@@ -32,7 +32,7 @@ const FilterByType = (props) => {
         console.log(err);
         if (err.response.status === 401) props.history.push("/");
       });
-  }, []);
+  }, [props.history]);
 
   return (
     <div className="all-types">

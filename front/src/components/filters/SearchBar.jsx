@@ -2,8 +2,6 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { searchValue } from "../../actions";
 import { DebounceInput } from "react-debounce-input";
-import InputGroup from "react-bootstrap/InputGroup";
-import FormControl from "react-bootstrap/FormControl";
 
 import { BsSearch } from "react-icons/bs";
 
@@ -23,7 +21,7 @@ const SearchBar = () => {
         type="text"
         aria-label="Search"
         aria-describedby="search-icon"
-        required
+        autoFocus
       />
       <div className="search-icon">
         <BsSearch />
