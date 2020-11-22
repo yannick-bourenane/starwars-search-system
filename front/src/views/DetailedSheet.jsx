@@ -158,21 +158,18 @@ const DetailedSheet = (props) => {
           <Col md={{ span: 8, offset: 2 }}>
             <div className="detail-nav">
               <div className={"result-breadcrumb"}>
-                <Link to="/search" onClick={() => linkBreadcrumb([])}>
+                {/* <Link to="/search" onClick={() => linkBreadcrumb([])}>
                   Search
                 </Link>{" "}
-                &gt;{" "}
+                /{" "} */}
                 <Link
                   to="/search"
                   onClick={() => linkBreadcrumb([props.location.state.type])}
                 >
                   {props.location.state.type}
                 </Link>{" "}
-                &gt; {infos.name || infos.title}
+                / {infos.name || infos.title}
               </div>
-              <button className="button" onClick={() => props.history.goBack()}>
-                &lt; Retour
-              </button>
             </div>
             {Object.keys(infos).length > 0 && (
               <>

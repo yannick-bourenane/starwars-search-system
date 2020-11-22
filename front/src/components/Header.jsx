@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { typeValues } from "../actions";
 import { searchValue } from "../actions";
 import UserContext from "../auth/UserContext";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import Axios from "axios";
 import "../styles/header.css";
 
@@ -41,7 +41,11 @@ const Header = (props) => {
           </div>
         </div>
       )}
-      <h1>Galaxy Database</h1>
+      <h1>
+        <Link className="glowing-title" to="/search">
+          Galaxy database
+        </Link>
+      </h1>
     </header>
   );
 };

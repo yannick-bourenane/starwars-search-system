@@ -68,3 +68,8 @@ b {
 .button:hover {
   background-color: var(--main-color-hover);
 }
+.back-btn {
+  color: var(--main-color-hover);
+  margin-bottom: 10px;
+  font-size: 1.8em;
+}

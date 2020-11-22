@@ -1,69 +1,137 @@
 .detail-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--second-color);
+  margin-bottom: 15px;
 }
 
 .detail-nav button {
-    margin-bottom: 5px;
+  margin-bottom: 5px;
 }
 
 .result-breadcrumb {
-    text-transform: capitalize;
-    border-radius: 5px;
-    color: #888;
-    margin-bottom: 5px;
+  text-transform: capitalize;
+  border-radius: 5px;
+  color: #888;
+  margin-bottom: 5px;
 }
 
 .result-breadcrumb a,
 .fiche h1,
 .fiche .list a {
-    color: var(--main-color);
+  color: var(--main-color);
 }
 
 .fiche {
-    padding: 25px;
-    background-color: var(--second-color);
-    border-radius: 5px;
-    text-align: left;
+  /* background-color: var(--empire-color); */
+  border-radius: 5px;
+  text-align: left;
+}
+table.divers {
+  table-layout: auto;
+  border-collapse: collapse;
+  width: 100%;
+}
+/* .fiche tr:first-child .label {
+  border-radius: 5px 0 0 0;
+}
+.fiche tr:last-child .label {
+  border-radius: 0 0 0 5px;
+}
+.fiche tr:first-child .info {
+  border-radius: 0 5px 0 0;
+}
+.fiche tr:last-child .info {
+  border-radius: 0 0 5px 0;
+} */
+.fiche .label {
+  color: var(--main-color);
+  border-bottom: 1px solid var(--second-color);
+  padding: 7px 0;
+}
+.fiche .info {
+  padding: 0 0 0 20px;
+  margin-bottom: 5px;
+  color: var(--main-color);
+  font-size: 20px;
+  font-weight: 700;
 }
 
 .fiche h1 {
-    margin-bottom: 25px;
-    text-align: center;
+  font-weight: 100;
+  font-size: 50px;
+  margin-bottom: 10px;
 }
 
 .fiche .list {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .fiche .list a {
-    display: inline-block;
-    margin-right: 5px;
-    margin-bottom: 5px;
-    background-color: #222;
-    padding: 2px 5px;
+  display: inline-block;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  background-color: var(--empire-color);
+  padding: 5px;
+  border-radius: 5px;
+  font-weight: 200;
 }
 
 .fiche .list a:hover {
-    text-decoration: none;
-    color: #222;
-    background-color: var(--main-color);
+  text-decoration: none;
+  color: var(--main-color);
+  background-color: var(--second-color);
 }
 
 .fiche .related {
-    margin-top: 15px;
-    padding-top: 15px;
-    border-top: 1px solid #444;
-}
-
-.fiche h5 {
-    text-transform: capitalize;
+  margin-top: 15px;
+  padding-top: 15px;
 }
 
 .fiche .divers {
-    list-style: none;
+  list-style: none;
+}
+
+.related.related-films h5 .type-icon {
+  background: url("../assets/img/icons/film-white.svg") center center no-repeat
+    var(--second-color);
+}
+.related.related-people h5 .type-icon {
+  background: url("../assets/img/icons/people-white.svg") center center
+    no-repeat var(--second-color);
+}
+.related.related-planets h5 .type-icon {
+  background: url("../assets/img/icons/planet-white.svg") center center
+    no-repeat var(--second-color);
+}
+.related.related-species h5 .type-icon {
+  background: url("../assets/img/icons/species-white.svg") center center
+    no-repeat var(--second-color);
+}
+.related.related-starships h5 .type-icon {
+  background: url("../assets/img/icons/starship-white.svg") center center
+    no-repeat var(--second-color);
+}
+.related.related-vehicles h5 .type-icon {
+  background: url("../assets/img/icons/vehicle-white.svg") center center
+    no-repeat var(--second-color);
+}
+
+.fiche h5 {
+  text-transform: capitalize;
+  font-weight: 200;
+  display: flex;
+  align-items: center;
+}
+.related h5 .type-icon {
+  background-size: auto 80% !important;
+  width: 36px;
+  height: 36px;
+  margin-right: 10px;
+  display: inline-block;
+  border-radius: 5px;
 }

@@ -13,29 +13,33 @@ const FilmDetail = ({
   const relatedContentArr = [people, species, planets, vehicles, starships];
   return (
     <section className={"fiche fiche-" + type}>
-      <h1>{infos.title}</h1>
-      <ul className="divers">
+      <h1 className="glowing-title">{infos.title}</h1>
+      <table className="divers">
         {infos.episode_id && (
-          <li>
-            <b>Movie n°</b> : {infos.episode_id}
-          </li>
+          <tr>
+            <td className="label">Movie n°</td>{" "}
+            <td className="info">{infos.episode_id}</td>
+          </tr>
         )}
         {infos.director && (
-          <li>
-            <b>Director</b> : {infos.director}
-          </li>
+          <tr>
+            <td className="label">Director</td>{" "}
+            <td className="info">{infos.director}</td>
+          </tr>
         )}
         {infos.producer && (
-          <li>
-            <b>Producer</b> : {infos.producer}
-          </li>
+          <tr>
+            <td className="label">Producer</td>{" "}
+            <td className="info">{infos.producer}</td>
+          </tr>
         )}
         {infos.release_date && (
-          <li>
-            <b>Release date</b> : {infos.release_date}
-          </li>
+          <tr>
+            <td className="label">Release date</td>{" "}
+            <td className="info">{infos.release_date}</td>
+          </tr>
         )}
-      </ul>
+      </table>
       {relatedContentArr.map(
         (related) =>
           related.length > 0 && (

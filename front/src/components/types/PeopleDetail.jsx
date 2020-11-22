@@ -12,29 +12,33 @@ const PeopleDetail = ({
   const relatedContentArr = [species, homeWorld, vehicles, starships];
   return (
     <section className={"fiche fiche-" + type}>
-      <h1>{infos.name}</h1>
-      <ul className="divers">
+      <h1 className="glowing-title">{infos.name}</h1>
+      <table className="divers">
         {infos.gender && (
-          <li>
-            <b>Gender :</b> {infos.gender}
-          </li>
+          <tr>
+            <td className="label">Gender</td>{" "}
+            <td className="info">{infos.gender}</td>
+          </tr>
         )}
         {infos.birth_year && (
-          <li>
-            <b>Birth year :</b> {infos.birth_year}
-          </li>
+          <tr>
+            <td className="label">Birth year</td>{" "}
+            <td className="info">{infos.birth_year}</td>
+          </tr>
         )}
         {infos.mass && (
-          <li>
-            <b>Mass :</b> {infos.mass}
-          </li>
+          <tr>
+            <td className="label">Mass</td>{" "}
+            <td className="info">{infos.mass}</td>
+          </tr>
         )}
         {infos.height && (
-          <li>
-            <b>Height :</b> {infos.height}
-          </li>
+          <tr>
+            <td className="label">Height</td>{" "}
+            <td className="info">{infos.height}</td>
+          </tr>
         )}
-      </ul>
+      </table>
       {relatedContentArr.map(
         (related) =>
           related.length > 0 && (

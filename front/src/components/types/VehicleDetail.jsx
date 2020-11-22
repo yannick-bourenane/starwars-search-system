@@ -5,38 +5,52 @@ const VehicleDetail = ({ type, infos, people }) => {
   const relatedContentArr = [people];
   return (
     <section className={"fiche fiche-" + type}>
-      <h1>{infos.name}</h1>
-      <ul className="divers">
+      <h1 className="glowing-title">{infos.name}</h1>
+      <table className="divers">
         {(infos.model && infos.model) !== infos.name && (
-          <li>
-            <b>Model :</b> {infos.model}
-          </li>
+          <tr>
+            <td className="label">Model</td>{" "}
+            <td className="info">{infos.model}</td>
+          </tr>
         )}
         {infos.manufacturer && (
-          <li>
-            <b>Manufacturer :</b> {infos.manufacturer}
-          </li>
+          <tr>
+            <td className="label">Manufacturer</td>{" "}
+            <td className="info">{infos.manufacturer}</td>
+          </tr>
         )}
         {infos.cost_in_credits && (
-          <li>Cost : {infos.cost_in_credits} credits</li>
+          <tr>
+            <td className="label">Cost</td>{" "}
+            <td className="info">{infos.cost_in_credits} credits</td>
+          </tr>
         )}
         {infos.length && (
-          <li>
-            <b>Length :</b> {infos.length}
-          </li>
+          <tr>
+            <td className="label">Length</td>{" "}
+            <td className="info">{infos.length}</td>
+          </tr>
         )}
         {infos.max_atmosphering_speed && (
-          <li>
-            <b>Max atmosphering speed :</b> {infos.max_atmosphering_speed}
-          </li>
+          <tr>
+            <td className="label">Max atmosphering speed</td>{" "}
+            <td className="info">{infos.max_atmosphering_speed}</td>
+          </tr>
         )}
-        {infos.crew && <li>Crew : {infos.crew}</li>}
+        {infos.crew && (
+          <tr>
+            {" "}
+            <td className="label">Crew</td>{" "}
+            <td className="info">{infos.crew}</td>
+          </tr>
+        )}
         {infos.passengers && (
-          <li>
-            <b>Passengers :</b> {infos.passengers}
-          </li>
+          <tr>
+            <td className="label">Passengers</td>{" "}
+            <td className="info">{infos.passengers}</td>
+          </tr>
         )}
-      </ul>
+      </table>
       {relatedContentArr.map(
         (related) =>
           related.length > 0 && (

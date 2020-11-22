@@ -5,44 +5,51 @@ const SpeciesDetail = ({ type, infos, people, homeWorld }) => {
   const relatedContentArr = [people, homeWorld];
   return (
     <section className={"fiche fiche-" + type}>
-      <h1>{infos.name}</h1>
-      <ul className="divers">
+      <h1 className="glowing-title">{infos.name}</h1>
+      <table className="divers">
         {infos.classification && (
-          <li>
-            <b>Classification :</b> {infos.classification}
-          </li>
+          <tr>
+            <td className="label">Classification</td>{" "}
+            <td className="info">{infos.classification}</td>
+          </tr>
         )}
         {infos.average_height && (
-          <li>
-            <b>Average height :</b> {infos.average_height}
-          </li>
+          <tr>
+            <td className="label">Average height</td>{" "}
+            <td className="info">{infos.average_height}</td>
+          </tr>
         )}
         {infos.skin_colors && (
-          <li>
-            <b>Skin colors :</b> {infos.skin_colors}
-          </li>
+          <tr>
+            <td className="label">Skin colors</td>{" "}
+            <td className="info">{infos.skin_colors}</td>
+          </tr>
         )}
         {infos.hair_colors && (
-          <li>
-            <b>Hair colors :</b> {infos.hair_colors}
-          </li>
+          <tr>
+            <td className="label">Hair colors</td>{" "}
+            <td className="info">{infos.hair_colors}</td>
+          </tr>
         )}
         {infos.eye_colors && (
-          <li>
-            <b>Eye colors :</b> {infos.eye_colors}
-          </li>
+          <tr>
+            <td className="label">Eye colors</td>{" "}
+            <td className="info">{infos.eye_colors}</td>
+          </tr>
         )}
-        {infos.average_lifespan && (
-          <li>
-            <b>Average lifespan :</b> {infos.average_lifespan}
-          </li>
+        {infos.average_lifetd && (
+          <tr>
+            <td className="label">Average lifetd</td>{" "}
+            <td className="info">{infos.average_lifetd}</td>
+          </tr>
         )}
         {infos.language && (
-          <li>
-            <b>Language :</b> {infos.language}
-          </li>
+          <tr>
+            <td className="label">Language</td>{" "}
+            <td className="info">{infos.language}</td>
+          </tr>
         )}
-      </ul>
+      </table>
       {relatedContentArr.map(
         (related) =>
           related.length > 0 && (

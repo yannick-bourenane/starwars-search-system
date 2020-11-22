@@ -5,29 +5,33 @@ const PlanetDetail = ({ type, infos, people }) => {
   const relatedContentArr = [people];
   return (
     <section className={"fiche fiche-" + type}>
-      <h1>{infos.name}</h1>
-      <ul className="divers">
+      <h1 className="glowing-title">{infos.name}</h1>
+      <table className="divers">
         {infos.climate && (
-          <li>
-            <b>Climate :</b> {infos.climate}
-          </li>
+          <tr>
+            <td className="label">Climate</td>{" "}
+            <td className="info">{infos.climate}</td>
+          </tr>
         )}
         {infos.terrain && (
-          <li>
-            <b>Terrain :</b> {infos.terrain}
-          </li>
+          <tr>
+            <td className="label">Terrain</td>{" "}
+            <td className="info">{infos.terrain}</td>
+          </tr>
         )}
         {infos.gravity && (
-          <li>
-            <b>Gravity :</b> {infos.gravity}
-          </li>
+          <tr>
+            <td className="label">Gravity</td>{" "}
+            <td className="info">{infos.gravity}</td>
+          </tr>
         )}
         {infos.population && (
-          <li>
-            <b>Population :</b> {infos.population}
-          </li>
+          <tr>
+            <td className="label">Population</td>{" "}
+            <td className="info">{infos.population}</td>
+          </tr>
         )}
-      </ul>
+      </table>
       {relatedContentArr.map(
         (related) =>
           related.length > 0 && (
