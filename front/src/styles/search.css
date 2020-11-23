@@ -123,6 +123,16 @@ input.search {
   user-select: none;
   color: #ccc;
 }
+@media screen and (max-width: 980px) {
+  .all-types {
+    grid-column-gap: 10px;
+  }
+  .all-types .type {
+    padding-left: 35px;
+    text-align: left;
+    background-size: auto 75%;
+  }
+}
 .all-types .type:hover,
 .all-types .type.is-selected {
   background-position-x: 5% !important;
